@@ -4,30 +4,48 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>慈濟大學 經營管理學系 | Department of Business Management, Tzu Chi University</title>
-    <!-- Google Fonts: 古典倫敦大學襯線體與現代無襯線體組合 -->
+    
+    <!-- Google Fonts: Playfair Display, Noto Serif TC, Inter, Noto Sans TC -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Noto+Serif+TC:wght@400;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@400;600;700;900&family=Playfair+Display:ital,wght@0,500;0,700;0,900;1,400&display=swap" rel="stylesheet">
     
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <style>
-        /* ==========================================
-           1. 倫敦大學風格 全域 CSS 變數定義
-           ========================================== */
+        /* ==========================================================================
+           1. UNIVERSITY OF LONDON / OXFORD STYLE DESIGN SYSTEM
+           ========================================================================== */
         :root {
-            --uol-navy: #002147;       /* 皇家深藍 Royal Oxford Navy */
-            --uol-navy-light: #0d3663; /* 淺高雅藍 */
-            --uol-gold: #c5a059;       /* 學術金 Academic Gold */
-            --uol-gold-hover: #dfb76c; /* 明亮金 */
-            --uol-crimson: #800020;    /* 倫敦帝國紅 Regal Crimson */
-            --uol-dark: #111111;       /* 文字深灰 */
-            --uol-grey-bg: #f4f5f7;    /* 淺灰底色 */
-            --uol-warm-white: #faf9f5; /* 古典象牙白 */
-            --uol-border: #dcd6cd;     /* 典雅細線 */
-            --uol-shadow: 0 10px 30px rgba(0, 33, 71, 0.08);
-            --font-serif: 'Playfair Display', 'Noto Serif TC', Georgia, serif;
-            --font-sans: 'Roboto', 'Noto Sans TC', sans-serif;
-            --font-display: 'Cinzel', serif;
+            /* Palette */
+            --uol-navy: #002147;          /* Classic Imperial Royal Navy */
+            --uol-navy-dark: #07152B;     /* Deep Shadow Navy */
+            --uol-navy-light: #0D2F5B;    /* Lighter Navy for hovers */
+            --uol-gold: #C5A059;          /* Academic Regal Gold */
+            --uol-gold-hover: #B08A43;
+            --uol-gold-light: #F7F3E9;    /* Soft Tint Gold */
+            --uol-crimson: #800020;       /* Oxbridge Crimson Accent */
+            --uol-bg-warm: #FAF9F5;       /* Academic Warm Off-White */
+            --uol-bg-card: #FFFFFF;
+            --uol-text-dark: #1A1A1A;     /* Rich Dark Charcoal */
+            --uol-text-muted: #4A5568;    /* Slate Gray */
+            --uol-text-light: #718096;
+            --uol-border: #E2E8F0;
+            --uol-border-gold: #D4AF37;
+
+            /* Fonts */
+            --font-serif: 'Playfair Display', 'Noto Serif TC', 'Georgia', serif;
+            --font-sans: 'Inter', 'Noto Sans TC', -apple-system, BlinkMacSystemFont, sans-serif;
+
+            /* Visual Depth */
+            --radius-sm: 4px;             /* Crisp traditional corners */
+            --radius-md: 8px;
+            --radius-lg: 12px;
+            --shadow-subtle: 0 4px 20px rgba(0, 33, 71, 0.06);
+            --shadow-elevated: 0 12px 32px rgba(0, 33, 71, 0.12);
+            --transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            --max-width: 1280px;
         }
 
         * {
@@ -36,360 +54,2004 @@
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
         body {
             font-family: var(--font-sans);
-            background-color: var(--uol-warm-white);
-            color: var(--uol-dark);
-            line-height: 1.7;
+            background-color: var(--uol-bg-warm);
+            color: var(--text-dark);
+            line-height: 1.65;
             overflow-x: hidden;
         }
 
         a {
             text-decoration: none;
             color: inherit;
-            transition: all 0.3s ease;
+            transition: var(--transition);
         }
 
         ul {
             list-style: none;
         }
 
-        /* ==========================================
-           2. 倫敦大學風格 頁首標籤與導覽列 Header
-           ========================================== */
-        .uol-topbar {
-            background-color: var(--uol-navy);
-            color: #ffffff;
-            font-size: 0.85rem;
-            padding: 8px 0;
-            border-bottom: 2px solid var(--uol-gold);
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
         }
 
-        .uol-container {
-            max-width: 1280px;
+        /* Typography & Layout Utilities */
+        .container {
+            width: 100%;
+            max-width: var(--max-width);
             margin: 0 auto;
-            padding: 0 24px;
+            padding: 0 1.5rem;
         }
 
-        .uol-topbar-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        .section-padding {
+            padding: 5rem 0;
         }
 
-        .uol-topbar-links a {
-            color: rgba(255, 255, 255, 0.8);
-            margin-left: 20px;
-            font-size: 0.8rem;
-            letter-spacing: 0.5px;
+        .serif-heading {
+            font-family: var(--font-serif);
+            font-weight: 700;
+            letter-spacing: -0.01em;
         }
 
-        .uol-topbar-links a:hover {
+        .section-header {
+            text-align: center;
+            margin-bottom: 3.5rem;
+            position: relative;
+        }
+
+        .section-header::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background-color: var(--uol-gold);
+            margin: 1.25rem auto 0;
+        }
+
+        .section-kicker {
+            font-family: var(--font-serif);
             color: var(--uol-gold);
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: 0.5rem;
+            display: block;
         }
 
-        .uol-header {
-            background: #ffffff;
-            padding: 24px 0;
-            border-bottom: 1px solid var(--uol-border);
-            box-shadow: var(--uol-shadow);
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--uol-navy);
+            line-height: 1.25;
         }
 
-        .uol-header-main {
-            display: flex;
-            justify-content: space-between;
+        .section-desc {
+            color: var(--uol-text-muted);
+            max-width: 720px;
+            margin: 0.75rem auto 0;
+            font-size: 1.05rem;
+        }
+
+        /* Badges & Buttons */
+        .uol-badge {
+            display: inline-flex;
             align-items: center;
+            gap: 0.4rem;
+            padding: 0.3rem 0.8rem;
+            border-radius: var(--radius-sm);
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
         }
 
-        .uol-brand {
-            display: flex;
-            align-items: center;
-            gap: 20px;
+        .badge-gold {
+            background-color: var(--uol-gold-light);
+            color: var(--uol-navy);
+            border: 1px solid rgba(197, 160, 89, 0.4);
         }
 
-        .uol-crest {
-            width: 65px;
-            height: 65px;
-            background: var(--uol-navy);
-            color: var(--uol-gold);
-            border-radius: 50%;
-            display: flex;
+        .badge-navy {
+            background-color: var(--uol-navy);
+            color: #FFFFFF;
+        }
+
+        .badge-crimson {
+            background-color: rgba(128, 0, 32, 0.1);
+            color: var(--uol-crimson);
+            border: 1px solid rgba(128, 0, 32, 0.2);
+        }
+
+        .btn-uol {
+            display: inline-flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.8rem;
-            border: 2px solid var(--uol-gold);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-        }
-
-        .uol-title-group h1 {
-            font-family: var(--font-serif);
-            font-size: 1.8rem;
-            color: var(--uol-navy);
-            font-weight: 700;
-            letter-spacing: 1px;
-            margin-bottom: 2px;
-        }
-
-        .uol-title-group p {
-            font-family: var(--font-display);
-            font-size: 0.85rem;
-            color: var(--uol-gold);
-            letter-spacing: 1.5px;
+            gap: 0.6rem;
+            padding: 0.85rem 1.75rem;
+            border-radius: var(--radius-sm);
             font-weight: 600;
-        }
-
-        .uol-search-box {
-            position: relative;
-            width: 260px;
-        }
-
-        .uol-search-box input {
-            width: 100%;
-            padding: 9px 40px 9px 15px;
-            border: 1px solid var(--uol-border);
-            border-radius: 30px;
-            background-color: var(--uol-warm-white);
-            font-size: 0.88rem;
-            outline: none;
-            transition: all 0.3s;
-        }
-
-        .uol-search-box input:focus {
-            border-color: var(--uol-navy);
-            box-shadow: 0 0 0 3px rgba(0, 33, 71, 0.1);
-        }
-
-        .uol-search-box button {
-            position: absolute;
-            right: 12px;
-            top: 50%;
-            transform: translateY(-50%);
-            background: none;
-            border: none;
-            color: var(--uol-navy);
+            font-size: 0.95rem;
+            letter-spacing: 0.02em;
+            transition: var(--transition);
             cursor: pointer;
+            border: none;
         }
 
-        /* 主導覽列 Navbar */
-        .uol-nav {
+        .btn-gold {
+            background-color: var(--uol-gold);
+            color: var(--uol-navy-dark);
+        }
+
+        .btn-gold:hover {
+            background-color: var(--uol-gold-hover);
+            color: #FFFFFF;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(197, 160, 89, 0.35);
+        }
+
+        .btn-navy {
             background-color: var(--uol-navy);
+            color: #FFFFFF;
+        }
+
+        .btn-navy:hover {
+            background-color: var(--uol-navy-light);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(0, 33, 71, 0.3);
+        }
+
+        .btn-outline-gold {
+            background: transparent;
+            border: 1px solid var(--uol-gold);
+            color: var(--uol-gold);
+        }
+
+        .btn-outline-gold:hover {
+            background-color: var(--uol-gold);
+            color: var(--uol-navy-dark);
+        }
+
+        /* ==========================================================================
+           2. TOP UTILITY BAR & MAIN CREST HEADER
+           ========================================================================== */
+        .top-utility-bar {
+            background-color: var(--uol-navy-dark);
+            color: #D1D5DB;
+            font-size: 0.825rem;
+            border-bottom: 1px solid rgba(197, 160, 89, 0.25);
+            padding: 0.45rem 0;
+        }
+
+        .top-utility-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .top-utility-left {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .top-utility-left i {
+            color: var(--uol-gold);
+        }
+
+        .top-utility-right {
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+        }
+
+        .top-utility-link {
+            color: #E2E8F0;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .top-utility-link:hover {
+            color: var(--uol-gold);
+        }
+
+        /* Main Header with Monogram Crest */
+        .header-main {
+            background-color: #FFFFFF;
+            border-bottom: 1px solid var(--uol-border);
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            box-shadow: var(--shadow-subtle);
         }
 
-        .uol-nav-list {
+        .header-content {
             display: flex;
-            justify-content: flex-start;
+            justify-content: space-between;
+            align-items: center;
+            height: 90px;
         }
 
-        .uol-nav-item {
-            position: relative;
+        .crest-brand {
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
         }
 
-        .uol-nav-link {
-            display: block;
-            padding: 16px 24px;
-            color: #ffffff;
-            font-weight: 500;
-            font-size: 0.95rem;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-            border-bottom: 3px solid transparent;
-        }
-
-        .uol-nav-link:hover, .uol-nav-item.active .uol-nav-link {
-            background-color: var(--uol-navy-light);
+        .crest-logo-shield {
+            width: 54px;
+            height: 58px;
+            background: var(--uol-navy);
+            border: 2px solid var(--uol-gold);
+            clip-path: polygon(0 0, 100% 0, 100% 75%, 50% 100%, 0 75%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
             color: var(--uol-gold);
-            border-bottom-color: var(--uol-gold);
+            font-size: 1.6rem;
+            box-shadow: 0 4px 10px rgba(0, 33, 71, 0.2);
+            transition: var(--transition);
         }
 
-        /* ==========================================
-           3. 社論風格 Hero 焦點輪播區
-           ========================================== */
-        .uol-hero {
+        .crest-brand:hover .crest-logo-shield {
+            background: var(--uol-navy-light);
+            transform: scale(1.03);
+        }
+
+        .brand-titles {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .brand-title-cn {
+            font-family: var(--font-serif);
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--uol-navy);
+            line-height: 1.15;
+            letter-spacing: -0.01em;
+        }
+
+        .brand-title-en {
+            font-family: var(--font-serif);
+            font-size: 0.8rem;
+            color: var(--uol-gold);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-top: 0.2rem;
+            font-weight: 600;
+        }
+
+        /* Navigation Menu */
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-item {
             position: relative;
-            background: linear-gradient(135deg, var(--uol-navy) 0%, #001229 100%);
-            color: #ffffff;
-            padding: 80px 0 100px;
-            overflow: hidden;
-            border-bottom: 5px solid var(--uol-gold);
         }
 
-        .uol-hero::before {
+        .nav-link {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--uol-navy);
+            padding: 0.75rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            letter-spacing: 0.01em;
+        }
+
+        .nav-link::after {
             content: '';
             position: absolute;
-            top: 0; right: 0; bottom: 0; left: 0;
-            background: radial-gradient(circle at 80% 20%, rgba(197, 160, 89, 0.15) 0%, transparent 50%);
-            pointer-events: none;
+            bottom: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background-color: var(--uol-gold);
+            transition: var(--transition);
         }
 
-        .uol-hero-slider {
-            position: relative;
-            min-height: 380px;
+        .nav-link:hover {
+            color: var(--uol-gold-hover);
         }
 
-        .uol-slide {
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .hamburger {
             display: none;
+            font-size: 1.6rem;
+            color: var(--uol-navy);
+            background: none;
+            border: none;
+            padding: 0.5rem;
+            cursor: pointer;
+        }
+
+        /* Mobile Drawer */
+        .mobile-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(7, 21, 43, 0.7);
+            backdrop-filter: blur(4px);
+            z-index: 1050;
             opacity: 0;
-            transition: opacity 0.8s ease-in-out;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+        .mobile-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .mobile-drawer {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 85%;
+            max-width: 360px;
+            height: 100vh;
+            background: var(--uol-navy-dark);
+            color: #FFFFFF;
+            z-index: 1100;
+            padding: 2.5rem 2rem;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            box-shadow: -10px 0 30px rgba(0,0,0,0.5);
+            border-left: 2px solid var(--uol-gold);
+        }
+
+        .mobile-drawer.active {
+            right: 0;
+        }
+
+        .mobile-drawer-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(197, 160, 89, 0.3);
+            padding-bottom: 1rem;
+        }
+
+        .mobile-nav-links {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        .mobile-nav-link {
+            font-family: var(--font-serif);
+            font-size: 1.15rem;
+            color: #E2E8F0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .mobile-nav-link:hover {
+            color: var(--uol-gold);
+        }
+
+        /* ==========================================================================
+           3. EDITORIAL HERO BANNER & STATS BAR
+           ========================================================================== */
+        .hero-banner {
+            position: relative;
+            background-color: var(--uol-navy-dark);
+            color: #FFFFFF;
+            overflow: hidden;
+        }
+
+        .hero-slider-wrap {
+            position: relative;
+            min-height: 580px;
+            display: flex;
             align-items: center;
         }
 
-        .uol-slide.active {
-            display: grid;
+        .hero-slide {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.8s ease, transform 0.8s ease;
+            transform: scale(1.02);
+            display: flex;
+            align-items: center;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-slide.active {
             opacity: 1;
+            visibility: visible;
+            transform: scale(1);
         }
 
-        .uol-slide-tag {
-            display: inline-block;
-            background-color: var(--uol-gold);
-            color: var(--uol-navy);
-            padding: 4px 12px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            margin-bottom: 20px;
-            border-radius: 2px;
+        /* Editorial Background Overlays */
+        .hero-bg-1 {
+            background: linear-gradient(90deg, rgba(7, 21, 43, 0.95) 0%, rgba(7, 21, 43, 0.75) 50%, rgba(0, 33, 71, 0.4) 100%), 
+                        url('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=1600&q=80') center/cover;
+        }
+        .hero-bg-2 {
+            background: linear-gradient(90deg, rgba(7, 21, 43, 0.95) 0%, rgba(7, 21, 43, 0.75) 50%, rgba(0, 33, 71, 0.4) 100%), 
+                        url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1600&q=80') center/cover;
+        }
+        .hero-bg-3 {
+            background: linear-gradient(90deg, rgba(7, 21, 43, 0.95) 0%, rgba(7, 21, 43, 0.75) 50%, rgba(0, 33, 71, 0.4) 100%), 
+                        url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1600&q=80') center/cover;
         }
 
-        .uol-slide-title {
-            font-family: var(--font-serif);
-            font-size: 2.5rem;
-            line-height: 1.25;
-            margin-bottom: 20px;
-            color: #ffffff;
+        .hero-content {
+            max-width: 780px;
+            z-index: 2;
+            padding: 4rem 0;
         }
 
-        .uol-slide-desc {
-            color: rgba(255, 255, 255, 0.85);
-            font-size: 1.05rem;
-            margin-bottom: 30px;
-        }
-
-        .uol-btn {
+        .hero-tag {
             display: inline-flex;
             align-items: center;
-            gap: 10px;
-            padding: 12px 28px;
-            background-color: var(--uol-gold);
-            color: var(--uol-navy);
-            font-weight: 700;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
+            gap: 0.6rem;
+            background: rgba(197, 160, 89, 0.15);
+            border: 1px solid var(--uol-gold);
+            color: var(--uol-gold);
+            padding: 0.4rem 1rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
             text-transform: uppercase;
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s;
-            border-radius: 2px;
+            margin-bottom: 1.5rem;
+            border-radius: var(--radius-sm);
         }
 
-        .uol-btn:hover {
-            background-color: #ffffff;
-            color: var(--uol-navy);
-            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
+        .hero-headline {
+            font-family: var(--font-serif);
+            font-size: 3rem;
+            line-height: 1.2;
+            font-weight: 700;
+            color: #FFFFFF;
+            margin-bottom: 1.25rem;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
         }
 
-        .uol-slide-img {
-            position: relative;
-            border-radius: 4px;
-            overflow: hidden;
-            border: 4px solid rgba(197, 160, 89, 0.4);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
-            height: 340px;
+        .hero-subhead {
+            font-size: 1.15rem;
+            color: #E2E8F0;
+            margin-bottom: 2.25rem;
+            line-height: 1.7;
+            font-weight: 300;
         }
 
-        .uol-slide-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .uol-slider-nav {
+        .hero-cta-group {
             display: flex;
-            gap: 12px;
-            margin-top: 30px;
+            gap: 1.25rem;
+            flex-wrap: wrap;
         }
 
-        .uol-slider-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background-color: rgba(255, 255, 255, 0.3);
+        /* Hero Controls */
+        .hero-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 52px;
+            height: 52px;
+            border-radius: var(--radius-sm);
+            background: rgba(7, 21, 43, 0.6);
+            border: 1px solid rgba(197, 160, 89, 0.4);
+            color: var(--uol-gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
             cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .uol-slider-dot.active {
-            background-color: var(--uol-gold);
-            width: 32px;
-            border-radius: 6px;
-        }
-
-        /* ==========================================
-           4. 學術統計與戰略核心區
-           ========================================== */
-        .uol-stats-bar {
-            background-color: #ffffff;
-            margin-top: -40px;
-            position: relative;
+            transition: var(--transition);
             z-index: 10;
-            border-radius: 4px;
-            box-shadow: var(--uol-shadow);
-            border-top: 4px solid var(--uol-navy);
         }
 
-        .uol-stats-grid {
+        .hero-arrow:hover {
+            background: var(--uol-gold);
+            color: var(--uol-navy-dark);
+            border-color: var(--uol-gold);
+        }
+
+        .hero-prev { left: 1.5rem; }
+        .hero-next { right: 1.5rem; }
+
+        /* Stat Highlights Bar */
+        .stat-bar-container {
+            margin-top: -3.5rem;
+            position: relative;
+            z-index: 20;
+        }
+
+        .stat-bar-grid {
+            background-color: #FFFFFF;
+            border: 1px solid var(--uol-border);
+            border-top: 4px solid var(--uol-gold);
+            border-radius: var(--radius-sm);
+            box-shadow: var(--shadow-elevated);
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            padding: 30px 0;
-            text-align: center;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1rem;
+            padding: 2rem 1.5rem;
         }
 
-        .uol-stat-item {
+        .stat-card {
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+            padding: 0.5rem 1rem;
             border-right: 1px solid var(--uol-border);
-            padding: 0 20px;
         }
 
-        .uol-stat-item:last-child {
+        .stat-card:last-child {
             border-right: none;
         }
 
-        .uol-stat-num {
+        .stat-icon {
+            font-size: 2.2rem;
+            color: var(--uol-gold);
+        }
+
+        .stat-value {
             font-family: var(--font-serif);
-            font-size: 2.5rem;
+            font-size: 1.8rem;
+            font-weight: 700;
             color: var(--uol-navy);
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--uol-text-muted);
+            margin-top: 0.3rem;
+            font-weight: 500;
+        }
+
+        /* ==========================================================================
+           4. STRATEGIC PILLARS (四大核心領域)
+           ========================================================================== */
+        .pillars-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2rem;
+        }
+
+        .pillar-card {
+            background-color: var(--uol-bg-card);
+            border: 1px solid var(--uol-border);
+            border-radius: var(--radius-sm);
+            padding: 2.5rem 2rem;
+            transition: var(--transition);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            box-shadow: var(--shadow-subtle);
+        }
+
+        .pillar-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background-color: var(--uol-gold);
+            transform: scaleX(0);
+            transition: var(--transition);
+        }
+
+        .pillar-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-elevated);
+            border-color: rgba(197, 160, 89, 0.3);
+        }
+
+        .pillar-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .pillar-icon-wrap {
+            width: 60px;
+            height: 60px;
+            background-color: var(--uol-gold-light);
+            border: 1px solid rgba(197, 160, 89, 0.3);
+            border-radius: var(--radius-sm);
+            color: var(--uol-navy);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .pillar-title {
+            font-family: var(--font-serif);
+            font-size: 1.35rem;
+            color: var(--uol-navy);
+            margin-bottom: 0.85rem;
             font-weight: 700;
         }
 
-        .uol-stat-label {
+        .pillar-desc {
+            color: var(--uol-text-muted);
+            font-size: 0.95rem;
+            line-height: 1.65;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .pillar-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+            border-top: 1px dashed var(--uol-border);
+            padding-top: 1rem;
+        }
+
+        .pillar-list-item {
             font-size: 0.85rem;
-            color: #666;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-top: 5px;
+            color: var(--uol-text-dark);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
-        /* ==========================================
-           5. 主要內容板塊（區塊標題、公告Tabs與卡片）
-           ========================================== */
-        .uol-section {
-            padding: 70px 0;
+        .pillar-list-item i {
+            color: var(--uol-gold);
+            font-size: 0.75rem;
         }
 
-        .uol-section-title {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-
-        .uol-section-title h2 {
-            font-family: var(--font-serif);
-            font-size: 2.2rem;
-            color: var(--uol-navy);
-            margin-bottom: 10px;
+        /* ==========================================================================
+           5. ACADEMIC HONOURS & ACHIEVEMENTS (榮譽榜專區)
+           ========================================================================== */
+        .honours-section {
+            background-color: var(--uol-navy-dark);
+            color: #FFFFFF;
             position: relative;
-            display: inline-block;
+        }
+
+        .honours-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .honour-card {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(197, 160, 89, 0.3);
+            border-radius: var(--radius-sm);
+            padding: 2rem;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .honour-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--uol-gold);
+            transform: translateY(-4px);
+        }
+
+        .honour-badge-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .honour-title {
+            font-family: var(--font-serif);
+            font-size: 1.25rem;
+            color: #FFFFFF;
+            margin-bottom: 1rem;
+            line-height: 1.4;
+        }
+
+        .honour-desc {
+            color: #CBD5E1;
+            font-size: 0.925rem;
+            line-height: 1.65;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .honour-footer {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            color: var(--uol-gold);
+        }
+
+        /* ==========================================================================
+           6. NEWS & ANNOUNCEMENTS PORTAL (動態消息與即時搜尋)
+           ========================================================================== */
+        .news-section {
+            background-color: #FFFFFF;
+        }
+
+        .news-control-bar {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--uol-border);
+        }
+
+        @media (min-width: 768px) {
+            .news-control-bar {
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+            }
+        }
+
+        .news-tabs {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            overflow-x: auto;
+            padding-bottom: 0.5rem;
+        }
+
+        .news-tab-btn {
+            font-family: var(--font-serif);
+            padding: 0.6rem 1.2rem;
+            border-radius: var(--radius-sm);
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--uol-text-muted);
+            background: var(--uol-bg-warm);
+            border: 1px solid var(--uol-border);
+            cursor: pointer;
+            transition: var(--transition);
+            white-space: nowrap;
+        }
+
+        .news-tab-btn.active, .news-tab-btn:hover {
+            background-color: var(--uol-navy);
+            color: var(--uol-gold);
+            border-color: var(--uol-navy);
+        }
+
+        .search-field {
+            position: relative;
+            min-width: 300px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 0.65rem 1rem 0.65rem 2.6rem;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--uol-border);
+            background-color: var(--uol-bg-warm);
+            font-size: 0.9rem;
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .search-input:focus {
+            border-color: var(--uol-gold);
+            background-color: #FFFFFF;
+            box-shadow: 0 0 0 3px rgba(197, 160, 89, 0.15);
+        }
+
+        .search-icon-inside {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--uol-text-light);
+            font-size: 0.9rem;
+        }
+
+        /* News Cards List */
+        .news-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        .news-row-card {
+            background-color: var(--uol-bg-warm);
+            border: 1px solid var(--uol-border);
+            border-left: 4px solid var(--uol-navy);
+            border-radius: var(--radius-sm);
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        @media (min-width: 768px) {
+            .news-row-card {
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+            }
+        }
+
+        .news-row-card:hover {
+            border-left-color: var(--uol-gold);
+            background-color: #FFFFFF;
+            box-shadow: var(--shadow-subtle);
+            transform: translateX(4px);
+        }
+
+        .news-row-left {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .news-date-badge {
+            min-width: 80px;
+            text-align: center;
+            background: var(--uol-navy);
+            color: #FFFFFF;
+            padding: 0.5rem 0.75rem;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--uol-gold);
+        }
+
+        .news-date-day {
+            font-family: var(--font-serif);
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--uol-gold);
+            line-height: 1;
+        }
+
+        .news-date-year {
+            font-size: 0.725rem;
+            color: #E2E8F0;
+            margin-top: 0.25rem;
+        }
+
+        .news-row-body {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        .news-row-title {
+            font-family: var(--font-serif);
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--uol-navy);
+            line-height: 1.4;
+        }
+
+        .news-row-card:hover .news-row-title {
+            color: var(--uol-gold-hover);
+        }
+
+        .news-row-action {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--uol-navy);
+            font-size: 0.9rem;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        /* ==========================================================================
+           7. FACULTY DIRECTORY (師資陣容專區)
+           ========================================================================== */
+        .faculty-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+            gap: 2rem;
+        }
+
+        .faculty-card {
+            background-color: #FFFFFF;
+            border: 1px solid var(--uol-border);
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+            box-shadow: var(--shadow-subtle);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .faculty-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-elevated);
+            border-color: var(--uol-gold);
+        }
+
+        .faculty-header-bg {
+            height: 90px;
+            background: linear-gradient(135deg, var(--uol-navy), var(--uol-navy-dark));
+            border-bottom: 3px solid var(--uol-gold);
+            position: relative;
+        }
+
+        .faculty-avatar-wrap {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            border: 4px solid #FFFFFF;
+            background: var(--uol-gold-light);
+            color: var(--uol-navy);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.2rem;
+            margin: -45px auto 1rem;
+            box-shadow: var(--shadow-subtle);
+            position: relative;
+            z-index: 2;
+        }
+
+        .faculty-body {
+            padding: 0 1.5rem 1.75rem;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .faculty-name {
+            font-family: var(--font-serif);
+            font-size: 1.25rem;
+            color: var(--uol-navy);
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+
+        .faculty-role {
+            font-size: 0.85rem;
+            color: var(--uol-gold);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
+        }
+
+        .faculty-fields {
+            font-size: 0.875rem;
+            color: var(--uol-text-muted);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+            flex-grow: 1;
+            border-top: 1px dashed var(--uol-border);
+            padding-top: 1rem;
+        }
+
+        /* ==========================================================================
+           8. MODAL SYSTEM (全功能彈窗)
+           ========================================================================== */
+        .modal-backdrop {
+            position: fixed;
+            inset: 0;
+            background: rgba(7, 21, 43, 0.8);
+            backdrop-filter: blur(6px);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+        .modal-backdrop.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-window {
+            background-color: #FFFFFF;
+            border-top: 5px solid var(--uol-gold);
+            border-radius: var(--radius-sm);
+            width: 100%;
+            max-width: 720px;
+            max-height: 88vh;
+            overflow-y: auto;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            transform: scale(0.95);
+            transition: var(--transition);
+        }
+
+        .modal-backdrop.active .modal-window {
+            transform: scale(1);
+        }
+
+        .modal-header {
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid var(--uol-border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: var(--uol-bg-warm);
+        }
+
+        .modal-close {
+            width: 36px;
+            height: 36px;
+            border-radius: var(--radius-sm);
+            background: transparent;
+            border: 1px solid var(--uol-border);
+            color: var(--uol-text-muted);
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .modal-close:hover {
+            background: var(--uol-crimson);
+            color: #FFFFFF;
+            border-color: var(--uol-crimson);
+        }
+
+        .modal-body {
+            padding: 2.25rem 2rem;
+        }
+
+        .modal-article-title {
+            font-family: var(--font-serif);
+            font-size: 1.6rem;
+            color: var(--uol-navy);
+            margin-bottom: 1rem;
+            line-height: 1.35;
+        }
+
+        .modal-article-text {
+            color: var(--uol-text-dark);
+            line-height: 1.8;
+            font-size: 1.025rem;
+            white-space: pre-line;
+        }
+
+        /* ==========================================================================
+           9. FORMAL UK INSTITUTIONAL FOOTER
+           ========================================================================== */
+        .footer-main {
+            background-color: var(--uol-navy-dark);
+            color: #CBD5E1;
+            padding-top: 5rem;
+            padding-bottom: 2rem;
+            border-top: 3px solid var(--uol-gold);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+
+        .footer-col-title {
+            font-family: var(--font-serif);
+            color: #FFFFFF;
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.6rem;
+        }
+
+        .footer-col-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 35px;
+            height: 2px;
+            background-color: var(--uol-gold);
+        }
+
+        .footer-contacts {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            font-size: 0.925rem;
+        }
+
+        .footer-contact-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.85rem;
+        }
+
+        .footer-contact-row i {
+            color: var(--uol-gold);
+            margin-top: 0.25rem;
+        }
+
+        .privacy-card {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(197, 160, 89, 0.25);
+            border-radius: var(--radius-sm);
+            padding: 1.25rem;
+            margin-top: 0.5rem;
+        }
+
+        .privacy-card-title {
+            color: var(--uol-gold);
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 0.4rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .privacy-card-desc {
+            font-size: 0.825rem;
+            color: #94A3B8;
+            line-height: 1.5;
+        }
+
+        .social-row {
+            display: flex;
+            gap: 0.75rem;
+            margin-top: 1.25rem;
+        }
+
+        .social-icon-btn {
+            width: 42px;
+            height: 42px;
+            border-radius: var(--radius-sm);
+            background-color: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: #FFFFFF;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            transition: var(--transition);
+        }
+
+        .social-icon-btn:hover {
+            background-color: var(--uol-gold);
+            color: var(--uol-navy-dark);
+            border-color: var(--uol-gold);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            font-size: 0.85rem;
+            color: #64748B;
+        }
+
+        @media (min-width: 768px) {
+            .footer-bottom {
+                flex-direction: row;
+            }
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 992px) {
+            .nav-menu { display: none; }
+            .hamburger { display: block; }
+            .hero-headline { font-size: 2.1rem; }
+            .hero-subhead { font-size: 1rem; }
+            .hero-slider-wrap { min-height: 480px; }
+            .stat-card { border-right: none; border-bottom: 1px solid var(--uol-border); }
+        }
+    </style>
+</head>
+<body>
+
+
+    <!-- ==========================================================================
+       1. TOP UTILITY BAR (Royal Navy Dark)
+       ========================================================================== -->
+    <div class="top-utility-bar">
+        <div class="container top-utility-content">
+            <div class="top-utility-left">
+                <span><i class="fa-solid fa-graduation-cap"></i> 慈濟大學 經營管理學系 Official Portal</span>
+                <span class="d-none-sm"><i class="fa-solid fa-location-dot"></i> 臺灣花蓮介仁校區</span>
+            </div>
+            <div class="top-utility-right">
+                <a href="#" class="top-utility-link"><i class="fa-solid fa-globe"></i> 繁體中文 / English</a>
+                <a href="https://hlis.tcu.edu.tw" target="_blank" class="top-utility-link"><i class="fa-solid fa-right-to-bracket"></i> 校務系統</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==========================================================================
+       2. CREST HEADER & MAIN NAVIGATION
+       ========================================================================== -->
+    <header class="header-main">
+        <div class="container header-content">
+            <a href="#" class="crest-brand">
+                <div class="crest-logo-shield">
+                    <i class="fa-solid fa-building-columns"></i>
+                </div>
+                <div class="brand-titles">
+                    <span class="brand-title-cn">慈濟大學 經營管理學系</span>
+                    <span class="brand-title-en">Department of Business Management, TCU</span>
+                </div>
+            </a>
+
+            <!-- Desktop Menu -->
+            <nav class="nav-menu">
+                <div class="nav-item"><a href="#about" class="nav-link">系所簡介</a></div>
+                <div class="nav-item"><a href="#pillars" class="nav-link">發展特色</a></div>
+                <div class="nav-item"><a href="#honours" class="nav-link">榮譽與成果</a></div>
+                <div class="nav-item"><a href="#news" class="nav-link">動態消息</a></div>
+                <div class="nav-item"><a href="#faculty" class="nav-link">師資陣容</a></div>
+                <div class="nav-item"><a href="#admissions" class="nav-link">招生專區</a></div>
+                <div class="nav-item"><a href="#contact" class="nav-link">聯絡我們</a></div>
+            </nav>
+
+            <button class="hamburger" id="hamburgerBtn" aria-label="Toggle Navigation">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+    </header>
+<a href="studentsworks.html">學生作品</a>
+
+
+    <!-- Mobile Drawer System -->
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+    <div class="mobile-drawer" id="mobileDrawer">
+        <div class="mobile-drawer-header">
+            <span class="brand-title-cn" style="color: var(--uol-gold); font-size: 1.1rem;">導覽選單</span>
+            <button id="closeDrawerBtn" style="color: #FFFFFF; font-size: 1.5rem; background:none; border:none; cursor:pointer;">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+        <div class="mobile-nav-links">
+            <a href="#about" class="mobile-nav-link">系所簡介 <i class="fa-solid fa-chevron-right"></i></a>
+            <a href="#pillars" class="mobile-nav-link">發展特色 <i class="fa-solid fa-chevron-right"></i></a>
+            <a href="#honours" class="mobile-nav-link">榮譽與成果 <i class="fa-solid fa-chevron-right"></i></a>
+            <a href="#news" class="mobile-nav-link">動態消息 <i class="fa-solid fa-chevron-right"></i></a>
+            <a href="#faculty" class="mobile-nav-link">師資陣容 <i class="fa-solid fa-chevron-right"></i></a>
+            <a href="#admissions" class="mobile-nav-link">招生專區 <i class="fa-solid fa-chevron-right"></i></a>
+            <a href="#contact" class="mobile-nav-link">聯絡我們 <i class="fa-solid fa-chevron-right"></i></a>
+        </div>
+    </div>
+
+    <!-- ==========================================================================
+       3. EDITORIAL HERO BANNER
+       ========================================================================== -->
+    <section class="hero-banner">
+        <div class="container hero-slider-wrap">
+            
+            <!-- Hero Slide 1 -->
+            <div class="hero-slide hero-bg-1 active">
+                <div class="hero-content">
+                    <span class="hero-tag"><i class="fa-solid fa-award"></i> Regional Innovation & Impact</span>
+                    <h1 class="hero-headline serif-heading">「嶼食織心」團隊 榮獲 2026 花蓮青年鏈結地方產業補助</h1>
+                    <p class="hero-subhead">在林信宏老師悉心指導下，學生團隊結合地方創生與品牌經營實務，展現卓越專題研究實力，獲頒地方產業發展專題補助。</p>
+                    <div class="hero-cta-group">
+                        <a href="#honours" class="btn-uol btn-gold"><i class="fa-solid fa-magnifying-glass"></i> 探索榮譽榜單</a>
+                        <a href="#about" class="btn-uol btn-outline-gold"><i class="fa-solid fa-book-open"></i> 瞭解系所特色</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hero Slide 2 -->
+            <div class="hero-slide hero-bg-2">
+                <div class="hero-content">
+                    <span class="hero-tag"><i class="fa-solid fa-leaf"></i> Sustainable Management & ESG</span>
+                    <h1 class="hero-headline serif-heading">黑水虻廢棄物處理 榮獲 2025 全國經營管理專題競賽第二名</h1>
+                    <p class="hero-subhead">蘇美惠老師指導團隊以循環經濟與永續環境為核心，於全國眾多頂尖專題中脫穎而出，勇奪管理組全國亞軍殊榮。</p>
+                    <div class="hero-cta-group">
+                        <a href="#honours" class="btn-uol btn-gold"><i class="fa-solid fa-trophy"></i> 查看專題亮點</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hero Slide 3 -->
+            <div class="hero-slide hero-bg-3">
+                <div class="hero-content">
+                    <span class="hero-tag"><i class="fa-solid fa-earth-americas"></i> Global Mobility & AI Leadership</span>
+                    <h1 class="hero-headline serif-heading">紐約海外企業實習 × 生成式 AI 人力資源管理應用</h1>
+                    <p class="hero-subhead">深化美國紐約等海外頂尖企業實習交流，同時引領生成式 AI 輔助企業試題設計，培育具備前瞻科技視野之經管人才。</p>
+                    <div class="hero-cta-group">
+                        <a href="#pillars" class="btn-uol btn-gold"><i class="fa-solid fa-plane"></i> 了解國際計畫</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Arrow Nav -->
+            <button class="hero-arrow hero-prev" id="heroPrev"><i class="fa-solid fa-chevron-left"></i></button>
+            <button class="hero-arrow hero-next" id="heroNext"><i class="fa-solid fa-chevron-right"></i></button>
+        </div>
+    </section>
+
+    <!-- STAT HIGHLIGHTS BAR -->
+    <div class="container stat-bar-container">
+        <div class="stat-bar-grid">
+            <div class="stat-card">
+                <i class="fa-solid fa-briefcase stat-icon"></i>
+                <div>
+                    <div class="stat-value">100%</div>
+                    <div class="stat-label">產學合作與企業實習鏈結</div>
+                </div>
+            </div>
+            <div class="stat-card">
+                <i class="fa-solid fa-plane-departure stat-icon"></i>
+                <div>
+                    <div class="stat-value">NEW YORK</div>
+                    <div class="stat-label">紐約海外實習交流計畫</div>
+                </div>
+            </div>
+            <div class="stat-card">
+                <i class="fa-solid fa-seedling stat-icon"></i>
+                <div>
+                    <div class="stat-value">ESG & AI</div>
+                    <div class="stat-label">永續管理與生成式 AI 應用</div>
+                </div>
+            </div>
+            <div class="stat-card">
+                <i class="fa-solid fa-graduation-cap stat-icon"></i>
+                <div>
+                    <div class="stat-value">TOP 1%</div>
+                    <div class="stat-label">國內外頂尖名校升學表現</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==========================================================================
+       4. FOUR STRATEGIC PILLARS
+       ========================================================================== -->
+    <section class="section-padding" id="pillars">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-kicker">Academic Pillars</span>
+                <h2 class="section-title serif-heading">四大核心發展柱石</h2>
+                <p class="section-desc">結合慈濟人文精神與英國倫敦大學式嚴謹管理學門培訓，鍛造新世代企業經營領袖。</p>
+            </div>
+
+            <div class="pillars-grid">
+                <!-- Pillar 1 -->
+                <div class="pillar-card">
+                    <div class="pillar-icon-wrap"><i class="fa-solid fa-mountain-sun"></i></div>
+                    <h3 class="pillar-title">地方創生與品牌經營</h3>
+                    <p class="pillar-desc">深耕花東在地文化與部落資源，結合經營企劃與行銷策略，打造兼具社會效益與商業價值的地方創生品牌。</p>
+                    <div class="pillar-list">
+                        <div class="pillar-list-item"><i class="fa-solid fa-check"></i> 花蓮青年鏈結地方產業補助</div>
+                        <div class="pillar-list-item"><i class="fa-solid fa-check"></i> 部落品牌與文創實務考察</div>
+                    </div>
+                </div>
+
+                <!-- Pillar 2 -->
+                <div class="pillar-card">
+                    <div class="pillar-icon-wrap"><i class="fa-solid fa-leaf"></i></div>
+                    <h3 class="pillar-title">永續發展與 ESG 策略</h3>
+                    <p class="pillar-desc">因應全球氣候變遷與淨零排放趨勢，培育學生具備 ESG 企業永續評估、循環經濟與綠色供應鏈管理等核心專業。</p>
+                    <div class="pillar-list">
+                        <div class="pillar-list-item"><i class="fa-solid fa-check"></i> 全國經營管理專題競賽亞軍</div>
+                        <div class="pillar-list-item"><i class="fa-solid fa-check"></i> 廢棄物資源化與循環經濟</div>
+                    </div>
+                </div>
+
+                <!-- Pillar 3 -->
+                <div class="pillar-card">
+                    <div class="pillar-icon-wrap"><i class="fa-solid fa-robot"></i></div>
+                    <h3 class="pillar-title">智慧管理與生成式 AI</h3>
+                    <p class="pillar-desc">導入生成式 AI 輔助人力資源訓練、市場數據分析與數位行銷，賦予學生駕馭新一代前瞻科技決策之能力。</p>
+                    <div class="pillar-list">
+                        <div class="pillar-list-item"><i class="fa-solid fa-check"></i> 生成式 AI 人資試題輔助系統</div>
+                        <div class="pillar-list-item"><i class="fa-solid fa-check"></i> 智慧自媒體與數位數據分析</div>
+                    </div>
+                </div>
+
+                <!-- Pillar 4 -->
+                <div class="pillar-card">
+                    <div class="pillar-icon-wrap"><i class="fa-solid fa-earth-americas"></i></div>
+                    <h3 class="pillar-title">國際跨域與產學合作</h3>
+                    <p class="pillar-desc">開展紐約等多國海外實習，並與頂新集團、善菓集團等知名企業締結產學合作，無縫接軌國際高薪職場。</p>
+                    <div class="pillar-list">
+                        <div class="pillar-list-item"><i class="fa-solid fa-check"></i> 美國紐約海外實習交流</div>
+                        <div class="pillar-list-item"><i class="fa-solid fa-check"></i> 丙級烘焙技術士證照考取</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+       5. HONOURS & ACHIEVEMENTS (榮譽榜)
+       ========================================================================== -->
+    <section class="section-padding honours-section" id="honours">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-kicker" style="color: var(--uol-gold);">Academic Distinction</span>
+                <h2 class="section-title serif-heading" style="color: #FFFFFF;">榮譽榜與卓越研究成果</h2>
+                <p class="section-desc" style="color: #CBD5E1;">展示經管系師生於全國性學術競賽、地方創生計畫與國內外頂尖研究所升學之璀璨佳績。</p>
+            </div>
+
+            <div class="honours-grid">
+                <!-- Honour 1 -->
+                <div class="honour-card" onclick="openModal(1)">
+                    <div class="honour-badge-row">
+                        <span class="uol-badge badge-gold">地方創生補助</span>
+                        <span style="font-size:0.8rem; color:var(--uol-gold);">2026</span>
+                    </div>
+                    <h3 class="honour-title">「嶼食織心」團隊榮獲花蓮青年鏈結地方產業專題補助</h3>
+                    <p class="honour-desc">周禹嫻、林芷萱、高翊翔、吳進福、施柏言 同學在林信宏老師指導下，展現深厚的地方創生調研與商業營運實力。</p>
+                    <div class="honour-footer">
+                        <span><i class="fa-solid fa-user-check"></i> 指導教授：林信宏 老師</span>
+                        <span>詳細內文 <i class="fa-solid fa-arrow-right"></i></span>
+                    </div>
+                </div>
+
+                <!-- Honour 2 -->
+                <div class="honour-card" onclick="openModal(2)">
+                    <div class="honour-badge-row">
+                        <span class="uol-badge badge-gold">全國競賽亞軍</span>
+                        <span style="font-size:0.8rem; color:var(--uol-gold);">2025</span>
+                    </div>
+                    <h3 class="honour-title">黑水虻處理沼渣廢棄物評估 榮獲全國經營管理競賽第二名</h3>
+                    <p class="honour-desc">蘇美惠老師團隊深耕循環經濟與環境評估，於全國眾多大學經營管理專題隊伍中脫穎而出，勇奪全國第二名。</p>
+                    <div class="honour-footer">
+                        <span><i class="fa-solid fa-user-check"></i> 指導教授：蘇美惠 老師</span>
+                        <span>詳細內文 <i class="fa-solid fa-arrow-right"></i></span>
+                    </div>
+                </div>
+
+                <!-- Honour 3 -->
+                <div class="honour-card" onclick="openModal(4)">
+                    <div class="honour-badge-row">
+                        <span class="uol-badge badge-gold">名校升學佳報</span>
+                        <span style="font-size:0.8rem; color:var(--uol-gold);">2025</span>
+                    </div>
+                    <h3 class="honour-title">陳麗燕校友錄取台大氣候變遷博士班、饒景棠校友錄取成大碩士班</h3>
+                    <p class="honour-desc">本系學生學術基礎紮實，校友分別成功考取國立臺灣大學博士班與國立成功大學國際經營管理碩士班（IMBA）。</p>
+                    <div class="honour-footer">
+                        <span><i class="fa-solid fa-graduation-cap"></i> 優秀校友升學榜</span>
+                        <span>詳細內文 <i class="fa-solid fa-arrow-right"></i></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+       6. NEWS & ANNOUNCEMENTS PORTAL
+       ========================================================================== -->
+    <section class="section-padding news-section" id="news">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-kicker">News & Announcements</span>
+                <h2 class="section-title serif-heading">動態消息 與 公告專區</h2>
+                <p class="section-desc">即時掌握系所最新賽事捷報、學術講座、實習徵件與校內外重要公告。</p>
+            </div>
+
+            <!-- News Filter Controls -->
+            <div class="news-control-bar">
+                <div class="news-tabs" id="newsTabs">
+                    <button class="news-tab-btn active" data-category="all">全部消息 All</button>
+                    <button class="news-tab-btn" data-category="honor">榮譽榜 Honours</button>
+                    <button class="news-tab-btn" data-category="latest">最新動態 News</button>
+                    <button class="news-tab-btn" data-category="affairs">系務公告 Notices</button>
+                    <button class="news-tab-btn" data-category="external">校外來文 External</button>
+                </div>
+
+                <div class="search-field">
+                    <i class="fa-solid fa-magnifying-glass search-icon-inside"></i>
+                    <input type="text" id="searchInput" class="search-input" placeholder="搜尋公告關鍵字 (如：競賽, 證照, 博士)...">
+                </div>
+            </div>
+
+            <!-- News Render Grid -->
+            <div class="news-grid" id="newsContainer">
+                <!-- Javascript populates row cards here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+       7. FACULTY DIRECTORY
+       ========================================================================== -->
+    <section class="section-padding" id="faculty" style="background-color: var(--uol-bg-warm);">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-kicker">Distinguished Faculty</span>
+                <h2 class="section-title serif-heading">專任師資陣容</h2>
+                <p class="section-desc">擁有國內外頂尖學術博士學位，兼具深厚經營管理學術研究與產業顧問實戰經驗。</p>
+            </div>
+
+            <div class="faculty-grid">
+                <!-- Faculty 1 -->
+                <div class="faculty-card">
+                    <div class="faculty-header-bg"></div>
+                    <div class="faculty-avatar-wrap"><i class="fa-solid fa-user-tie"></i></div>
+                    <div class="faculty-body">
+                        <h3 class="faculty-name">林珍如 副教授兼系主任</h3>
+                        <p class="faculty-role">Chair & Associate Professor</p>
+                        <p class="faculty-fields">
+                            <strong>研究專長：</strong><br>
+                            服務业經營管理、品質管理實務、顧客滿意度評估、商業倫理與溝通
+                        </p>
+                        <a href="#contact" class="btn-uol btn-navy" style="font-size:0.85rem; padding:0.6rem 1rem;">
+                            <i class="fa-solid fa-envelope"></i> 聯絡主任辦公室
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Faculty 2 -->
+                <div class="faculty-card">
+                    <div class="faculty-header-bg"></div>
+                    <div class="faculty-avatar-wrap"><i class="fa-solid fa-leaf"></i></div>
+                    <div class="faculty-body">
+                        <h3 class="faculty-name">蘇美惠 副教授</h3>
+                        <p class="faculty-role">Associate Professor</p>
+                        <p class="faculty-fields">
+                            <strong>研究專長：</strong><br>
+                            循環經濟、環境與永續經營 (ESG)、廢棄物資源化、作業管理
+                        </p>
+                        <a href="#honours" class="btn-uol btn-navy" style="font-size:0.85rem; padding:0.6rem 1rem;">
+                            <i class="fa-solid fa-award"></i> 查看競賽指導亮點
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Faculty 3 -->
+                <div class="faculty-card">
+                    <div class="faculty-header-bg"></div>
+                    <div class="faculty-avatar-wrap"><i class="fa-solid fa-brain"></i></div>
+                    <div class="faculty-body">
+                        <h3 class="faculty-name">林俊銘 副教授</h3>
+                        <p class="faculty-role">Associate Professor</p>
+                        <p class="faculty-fields">
+                            <strong>研究專長：</strong><br>
+                            人力資源管理、生成式 AI 輔助試題設計、教育訓練評量、組織行為
+                        </p>
+                        <a href="#honours" class="btn-uol btn-navy" style="font-size:0.85rem; padding:0.6rem 1rem;">
+                            <i class="fa-solid fa-microchip"></i> 查看 AI 專題研究
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Faculty 4 -->
+                <div class="faculty-card">
+                    <div class="faculty-header-bg"></div>
+                    <div class="faculty-avatar-wrap"><i class="fa-solid fa-compass"></i></div>
+                    <div class="faculty-body">
+                        <h3 class="faculty-name">林信宏 助理教授</h3>
+                        <p class="faculty-role">Assistant Professor</p>
+                        <p class="faculty-fields">
+                            <strong>研究專長：</strong><br>
+                            地方創生實踐、文化觀光、品牌行銷企劃、產業供應鏈鏈結
+                        </p>
+                        <a href="#honours" class="btn-uol btn-navy" style="font-size:0.85rem; padding:0.6rem 1rem;">
+                            <i class="fa-solid fa-seedling"></i> 查看地方創生專題
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+       8. ADMISSIONS & GLOBAL MOBILITY SECTION
+       ========================================================================== -->
+    <section class="section-padding" id="admissions" style="background: #FFFFFF;">
+        <div class="container">
+            <div style="background: var(--uol-navy-dark); color:#FFFFFF; border-radius: var(--radius-sm); border-left: 6px solid var(--uol-gold); padding: 3.5rem 3rem; position:relative; overflow:hidden;">
+                <div style="max-width: 720px; z-index:2; position:relative;">
+                    <span class="uol-badge badge-gold" style="margin-bottom: 1rem;">Admissions 115 學年度</span>
+                    <h2 class="serif-heading" style="font-size: 2.25rem; margin-bottom: 1rem; color:#FFFFFF;">選擇慈濟經管 打造頂尖國際競爭力</h2>
+                    <p style="color: #CBD5E1; font-size: 1.05rem; margin-bottom: 2rem; line-height: 1.7;">
+                        我們提供繁星推薦、申請入學、分發入學及特殊選才等多項入學管道。入學即享有高額入學獎學金計畫、紐約海外實習選拔與四年全程職涯導師輔導機制。
+                    </p>
+                    <div style="display:flex; gap:1rem; flex-wrap:wrap;">
+                        <a href="https://admissions.tcu.edu.tw" target="_blank" class="btn-uol btn-gold"><i class="fa-solid fa-paper-plane"></i> 前往慈濟大學招生專區</a>
+                        <a href="#contact" class="btn-uol btn-outline-gold"><i class="fa-solid fa-phone"></i> 專人報考諮詢</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+       9. GLOBAL MODAL DIALOG
+       ========================================================================== -->
+    <div class="modal-backdrop" id="modalBackdrop">
+        <div class="modal-window">
+            <div class="modal-header">
+                <span class="uol-badge badge-gold" id="modalBadge">公告內容</span>
+                <button class="modal-close" id="modalCloseBtn"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="modal-body">
+                <div style="font-size: 0.85rem; color: var(--uol-gold); margin-bottom: 0.5rem; font-weight:600;" id="modalDate">
+                    <i class="fa-regular fa-calendar"></i> 2026-03-10
+                </div>
+                <h2 class="modal-article-title" id="modalTitle">載入中...</h2>
+                <div class="modal-article-text" id="modalContent">
+                    載入中...
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==========================================================================
+       10. FORMAL UK INSTITUTIONAL FOOTER
+       ========================================================================== -->
+    <footer class="footer-main" id="contact">
+        <div class="container">
+            <div class="footer-grid">
+                
+                <!-- Col 1: Institutional Monogram -->
+                <div>
+                    <h3 style="font-family: var(--font-serif); color: #FFFFFF; font-size: 1.3rem; margin-bottom: 0.4rem;">慈濟大學 經營管理學系</h3>
+                    <p style="color: var(--uol-gold); font-size: 0.85rem; font-weight: 600; letter-spacing: 0.05em; margin-bottom: 1.25rem;">
+                        DEPARTMENT OF BUSINESS MANAGEMENT, TCU
+                    </p>
+                    <p style="font-size: 0.9rem; color: #94A3B8; line-height: 1.65;">
+                        秉持慈濟人文濟世精神，融會英國式嚴謹管理學科訓練，致力培育具備永續視野、智慧科技實務與國際移動力之當代高階管理人才。
+                    </p>
+                    <div class="social-row">
+                        <a href="https://www.youtube.com/@tcu" target="_blank" class="social-icon-btn" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                        <a href="https://www.facebook.com" target="_blank" class="social-icon-btn" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="https://mdm.tcu.edu.tw" target="_blank" class="social-icon-btn" title="Official Web"><i class="fa-solid fa-globe"></i></a>
+                    </div>
+                </div>
+
+                <!-- Col 2: Navigation Links -->
+                <div>
+                    <h4 class="footer-col-title">快速導覽 Links</h4>
+                    <ul class="footer-contacts">
+                        <li><a href="#about" style="color:#CBD5E1;"><i class="fa-solid fa-chevron-right" style="color:var(--uol-gold); font-size:0.75rem;"></i> 系所簡介與發展願景</a></li>
+                        <li><a href="#pillars" style="color:#CBD5E1;"><i class="fa-solid fa-chevron-right" style="color:var(--uol-gold); font-size:0.75rem;"></i> 四大核心發展柱石</a></li>
+                        <li><a href="#honours" style="color:#CBD5E1;"><i class="fa-solid fa-chevron-right" style="color:var(--uol-gold); font-size:0.75rem;"></i> 學術研究與競賽榮譽榜</a></li>
+                        <li><a href="#faculty" style="color:#CBD5E1;"><i class="fa-solid fa-chevron-right" style="color:var(--uol-gold); font-size:0.75rem;"></i> 專任師資與研究領域</a></li>
+                        <li><a href="#admissions" style="color:#CBD5E1;"><i class="fa-solid fa-chevron-right" style="color:var(--uol-gold); font-size:0.75rem;"></i> 招生管道與獎學金資訊</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3: Contact Info -->
+                <div>
+                    <h4 class="footer-col-title">聯絡我們 Contact</h4>
+                    <div class="footer-contacts">
+                        <div class="footer-contact-row">
+                            <i class="fa-solid fa-location-dot"></i>
+                            <span>970 花蓮市介仁街67號 (介仁校區 經管系辦公室)</span>
+                        </div>
+                        <div class="footer-contact-row">
+                            <i class="fa-solid fa-phone"></i>
+                            <span>03-857-2677 分機 31682</span>
+                        </div>
+                        <div class="footer-contact-row">
+                            <i class="fa-solid fa-envelope"></i>
+                            <span>ss62@gms.tcu.edu.tw</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Col 4: Personal Data Protection Officer -->
+                <div>
+                    <h4 class="footer-col-title">個資保護窗口 Data Governance</h4>
+                    <div class="privacy-card">
+                        <div class="privacy-card-title"><i class="fa-solid fa-user-shield"></i> 個人資料保護負責人</div>
+                        <p class="privacy-card-desc"><strong>系主任：林珍如 副教授</strong></p>
+                        <p class="privacy-card-desc"><i class="fa-solid fa-phone"></i> 03-857-2677 #33126</p>
+                        <p class="privacy-card-desc"><i class="fa-solid fa-envelope"></i> lih5374@gms.tcu.edu.tw</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="footer-bottom">
+                <div>
+                    © 2026 慈濟大學 經營管理學系 版權所有. Department of Business Management, Tzu Chi University.
+                </div>
+                <div>
+                    Inspired by University of London Design Architecture
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ==========================================================================
+       11. INTERNAL JAVASCRIPT LOGIC
+       ========================================================================== -->
+    <script>
+        // ----------------------------------------------------------------------
+        // DATA ARRAY: ANNOUNCEMENTS & HONOURS
+        // ----------------------------------------------------------------------
+        const dataset = [
+            {
+                id: 1,
+                title: "【捷報】「嶼食織心」團隊榮獲 2026 花蓮青年鏈結地方產業專題成果補助！",
+                category: "honor",
+                categoryLabel: "榮譽榜 Honours",
+                date: "2026-03-10",
+                pinned: true,
+                content: `熱烈恭喜本系學生 周禹嫻、林芷萱、高翊翔、吳進福、施柏言 同學！
+在 指導老師：林信宏老師 悉心指導下，參與「2026 花蓮青年鏈結地方產業專題成果」競賽評選，憑藉紮實的地方創生調研、文化體驗設計與商業可行性評估，獲得評審高度青睞，榮獲專題成果補助金！
+
+團隊深入花蓮在地食材與織品文化，鏈結地方供應鏈，充分展現經管系實踐社會責任與商業創新之能力。`
+            },
+            {
+                id: 2,
+                title: "【競賽佳績】蘇美惠老師團隊「黑水虻處理沼渣廢棄物評估」榮獲 2025 全國經營管理專題競賽第二名",
+                category: "honor",
+                categoryLabel: "榮譽榜 Honours",
+                date: "2025-12-18",
+                pinned: true,
+                content: `賀！本系蘇美惠老師指導學生專題團隊，參加「2025 全國經營管理專題競賽」，於全國數百隊頂尖大專院校隊伍中脫穎而出，勇奪【管理組全國第二名】佳績！
+
+研究專題：「黑水虻處理沼渣廢棄物之可行性評估」
+團隊將循環經濟、農業廢棄物資源化與企業營運財務可行性緊密結合，充分體現永續經營 (ESG) 領域的研究實力。`
+            },
+            {
+                id: 3,
+                title: "【前沿技術】林俊銘老師團隊「生成式 AI 輔助教育訓練試題設計」獲 2025 全國經營管理專題競賽佳作",
+                category: "honor",
+                categoryLabel: "榮譽榜 Honours",
+                date: "2025-12-18",
+                pinned: false,
+                content: `賀！本系林俊銘老師指導學生團隊，以前瞻專題「生成式 AI 輔助教育訓練試題設計」，榮獲 2025 全國經營管理專題競賽【佳作】！
+
+研究探討如何運用生成式 AI 大語言模型，輔助企業人力資源部門進行員工培訓試題自動化生成與評量設計，大幅提升 HR 營運效率。`
+            },
+            {
+                id: 4,
+                title: "【升學捷報】陳麗燕校友錄取台大氣候變遷博士班、饒景棠校友錄取成大國際經管碩士班！",
+                category: "honor",
+                categoryLabel: "榮譽榜 Honours",
+                date: "2025-11-25",
+                pinned: true,
+                content: `本系優秀校友升學榜單捷報連連：
+1. 陳麗燕 校友：考取【國立臺灣大學 氣候變遷與永續發展博士學位學程】！
+2. 饒景棠 校友：考取【國立成功大學 國際經營管理碩士班 (IMBA)】！
+
+全體師生表達最熱烈的祝賀，也彰顯本系在永續發展與國際經管教育上的卓越奠基。`
+            },
+            {
+                id: 5,
+                title: "【專業考照】恭喜魯亭婕、康郡庭等 6 位同學順利考取考選部「丙級烘焙食品技術士證照」",
+                category: "honor",
+                categoryLabel: "榮譽榜 Honours",
+                date: "2025-10-30",
+                pinned: false,
+                content: `恭喜本系 魯亭婕、康郡庭 等 6 位同學，展現跨域學習熱情，順利考取國家「丙級烘焙食品技術士」專業證照！本系結合餐飲管理與實作，為同學未來創業奠定厚實基礎。`
+            },
+            {
+                id: 6,
+                title: "【創客競賽】本系團隊榮獲慈濟大學第六屆「創客+了沒」提案競賽全國第三名",
+                category: "honor",
+                categoryLabel: "榮譽榜 Honours",
+                date: "2025-10-15",
+                pinned: false,
+                content: `本系學生團隊參與慈濟大學第六屆「創客+了沒」創新提案競賽，發揮創新商業模式與地方問題解決企劃，榮獲第三名。`
+            },
+            {
+                id: 7,
+                title: "【系務公告】114學年度第二學期 經營管理學系選課與學分抵免須知",
+                category: "affairs",
+                categoryLabel: "系務公告 Notices",
+                date: "2026-02-20",
+                pinned: false,
+                content: `請同學們注意：114學年度第二學期課程選課與學分抵免申請即日開放，請參考系所課程地圖進行規劃。`
+            },
+            {
+                id: 8,
+                title: "【國際交流】美國紐約海外企業實習交流計畫申請開始",
+                category: "latest",
+                categoryLabel: "最新動態 News",
+                date: "2026-03-01",
+                pinned: false,
+                content: `本系提供豐富海外實習機會！紐約海外企業實習交流計畫即日起接受報名，提供全方位商業實務與外語培訓。`
+            },
+            {
+                id: 9,
+                title: "【校外來文】教育部「2026 大專院校青年永續創新創業競賽」徵件通知",
+                category: "external",
+                categoryLabel: "校外來文 External",
+                date: "2026-02-15",
+                pinned: false,
+                content: `轉知教育部青年署主辦之永續創新創業競賽，歡迎本系同學跨班組隊踴躍報名參加。`
+            }
+        ];
+
+        // ----------------------------------------------------------------------
+        // HERO SLIDER LOGIC
+        // ----------------------------------------------------------------------
+        let currentSlideIdx = 0;
+        const heroSlides = document.querySelectorAll('.hero-slide');
+        const totalHeroSlides = heroSlides.length;
+        let heroTimer;
+
+        function renderHeroSlide(idx) {
+            heroSlides.forEach(slide => slide.classList.remove('active'));
+            currentSlideIdx = (idx + totalHeroSlides) % totalHeroSlides;
+            heroSlides[currentSlideIdx].classList.add('active');
+        }
+
+        function nextHeroSlide() { renderHeroSlide(currentSlideIdx + 1); }
+        function prevHeroSlide() { renderHeroSlide(currentSlideIdx - 1); }
+
+        function startHeroTimer() {
+            stopHeroTimer();
+            heroTimer = setInterval(nextHeroSlide, 6000);
+        }
+
+        function stopHeroTimer() {
+            if (heroTimer) clearInterval(heroTimer);
+        }
+
+        document.getElementById('heroNext').addEventListener('click', () => { nextHeroSlide(); startHeroTimer(); });
+        document.getElementById('heroPrev').addEventListener('click', () => { prevHeroSlide(); startHeroTimer(); });
+
+        // ----------------------------------------------------------------------
+        // NEWS PORTAL FILTER & LIVE SEARCH
+        // ----------------------------------------------------------------------
+        let currentCategory = 'all';
+        let currentSearchQuery = '';
+
+        const newsContainer = document.getElementById('newsContainer');
+        const newsTabBtns = document.querySelectorAll('.news-tab-btn');
+        const searchInput = document.getElementById('searchInput');
+
+        function renderNewsGrid() {
+            const filtered = dataset.filter(item => {
+                const matchCat = (currentCategory === 'all') || (item.category === currentCategory);
+                const matchQuery = item.title.toLowerCase().includes(currentSearchQuery.toLowerCase()) ||
+                                   item.content.toLowerCase().includes(currentSearchQuery.toLowerCase());
+                return matchCat && matchQuery;
+            });
+
+            if (filtered.length === 0) {
+                newsContainer.innerHTML = `
+                    <div style="text-align:center; padding: 3rem; background: var(--uol-bg-warm); border: 1px dashed var(--uol-border); border-radius: var(--radius-sm);">
+                        <i class="fa-solid fa-folder-open" style="font-size:2.5rem; color: var(--uol-gold); margin-bottom: 0.75rem;"></i>
+                        <p style="font-family: var(--font-serif); font-size:1.1rem; font-weight:700; color: var(--uol-navy);">未找到相符的公告消息</p>
+                        <p style="font-size:0.875rem; color: var(--uol-text-muted); margin-top:0.25rem;">請嘗試調整關鍵字或更換分類標籤。</p>
+                    </div>
+                `;
+                return;
+            }
+
+            newsContainer.innerHTML = filtered.map(item => {
+                const parts = item.date.split('-');
+                const day = parts[2];
+                const yearMonth = `${parts[0]}.${parts[1]}`;
+
+                return `
+                    <div class="news-row-card" onclick="openModal(${item.id})">
+                        <div class="news-row-left">
+                            <div class="news-date-badge">
+                                <div class="news-date-day">${day}</div>
+                                <div class="news-date-year">${yearMonth}</div>
+                            </div>
+                            <div class="news-row-body">
+                                <div style="display:flex; gap:0.5rem; align-items:center;">
+                                    <span class="uol-badge badge-gold">${item.categoryLabel}</span>
+                                    ${item.pinned ? `<span class="uol-badge badge-crimson"><i class="fa-solid fa-thumbtack"></i> 置頂</span>` : ''}
+                                </div>
+                                <h3 class="news-row-title">${item.title}</h3>
+                            </div>
+                        </div>
+                        <div class="news-row-action">
+                            <span>查看詳細內文</span>
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        newsTabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                newsTabBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                currentCategory = btn.getAttribute('data-category');
+                renderNewsGrid();
+            });
+        });
+
+        searchInput.addEventListener('input', (e) => {
+            currentSearchQuery = e.target.value.trim();
+            renderNewsGrid();
+        });
+
+        // ----------------------------------------------------------------------
+        // MODAL SYSTEM
+        // ----------------------------------------------------------------------
+        const modalBackdrop = document.getElementById('modalBackdrop');
+        const modalBadge = document.getElementById('modalBadge');
+        const modalDate = document.getElementById('modalDate');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalContent = document.getElementById('modalContent');
+        const modalCloseBtn = document.getElementById('modalCloseBtn');
+
+        function openModal(id) {
+            const item = dataset.find(d => d.id === id);
+            if (!item) return;
+
+            modalBadge.textContent = item.categoryLabel;
+            modalDate.innerHTML = `<i class="fa-regular fa-calendar"></i> 發布日期：${item.date}`;
+            modalTitle.textContent = item.title;
+            modalContent.textContent = item.content;
+
+            modalBackdrop.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            modalBackdrop.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        modalCloseBtn.addEventListener('click', closeModal);
+        modalBackdrop.addEventListener('click', (e) => {
+            if (e.target === modalBackdrop) closeModal();
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modalBackdrop.classList.contains('active')) {
+                closeModal();
+            }
+        });
+
+        // ----------------------------------------------------------------------
+        // MOBILE DRAWER LOGIC
+        // ----------------------------------------------------------------------
+        const hamburgerBtn = document.getElementById('hamburgerBtn');
+        const mobileDrawer = document.getElementById('mobileDrawer');
+        const mobileOverlay = document.getElementById('mobileOverlay');
+        const closeDrawerBtn = document.getElementById('closeDrawerBtn');
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+        function openDrawer() {
+            mobileDrawer.classList.add('active');
+            mobileOverlay.classList.add('active');
+        }
+
+        function closeDrawer() {
+            mobileDrawer.classList.remove('active');
+            mobileOverlay.classList.remove('active');
+        }
+
+        hamburgerBtn.addEventListener('click', openDrawer);
+        closeDrawerBtn.addEventListener('click', closeDrawer);
+        mobileOverlay.addEventListener('click', closeDrawer);
+        mobileNavLinks.forEach(link => link.addEventListener('click', closeDrawer));
+
+        // ----------------------------------------------------------------------
+        // INITIALIZATION
+        // ----------------------------------------------------------------------
+        window.addEventListener('DOMContentLoaded', () => {
+            renderNewsGrid();
+            startHeroTimer();
+        });
+    </script>
+</body>
+</html>
