@@ -1,830 +1,1092 @@
 <!DOCTYPE html>
-<html lang="zh-TW" class="scroll-smooth">
+<html lang="zh-TW">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Showcase | Dept. of Business Management, Tzu Chi University</title>
-    
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        navy: {
-                            800: '#132e4f',
-                            900: '#0c2340',
-                            950: '#061324',
-                        },
-                        crimson: {
-                            700: '#b30000',
-                            800: '#990000',
-                            900: '#7a0000',
-                        },
-                        gold: {
-                            300: '#dfc285',
-                            400: '#d4af37',
-                            500: '#c5a059',
-                            600: '#a37e38',
-                        },
-                        parchment: '#fcfbf7',
-                        academic: '#f4f1ea'
-                    },
-                    fontFamily: {
-                        serif: ['Playfair Display', 'Noto Serif TC', 'Georgia', 'serif'],
-                        sans: ['Inter', 'Noto Sans TC', 'sans-serif'],
-                    }
-                }
-            }
-        }
-    </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>慈濟大學 經營管理學系 | Department of Business Management, Tzu Chi University</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700;900&family=Playfair+Display:ital,wght@0,600;0,700;0,900;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* -------------------------------------------------------------
+       UK ACADEMIC STYLE SHEET (London / Oxford Institutional Theme)
+       ------------------------------------------------------------- */
+    :root {
+      --uk-navy: #002147;
+      --uk-navy-dark: #001530;
+      --uk-navy-light: #0d3463;
+      --uk-gold: #c5a059;
+      --uk-gold-light: #e2c88f;
+      --uk-gold-dark: #9e7b32;
+      --uk-crimson: #800020;
+      --bg-cream: #faf9f6;
+      --bg-surface: #ffffff;
+      --text-main: #1f2937;
+      --text-muted: #4b5563;
+      --text-light: #6b7280;
+      --border-light: #e5e7eb;
+      --border-gold: rgba(197, 160, 89, 0.4);
+      --font-serif: 'Playfair Display', 'Noto Serif TC', serif;
+      --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --shadow-sm: 0 2px 4px rgba(0, 33, 71, 0.04);
+      --shadow-md: 0 4px 12px rgba(0, 33, 71, 0.08);
+      --shadow-lg: 0 12px 28px rgba(0, 33, 71, 0.12);
+      --transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
 
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Serif+TC:wght@400;600;700;900&family=Playfair+Display:ital,wght@0,500;0,700;0,900;1,400&display=swap" rel="stylesheet">
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
+    html {
+      scroll-behavior: smooth;
+    }
 
-    
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--bg-cream);
+      color: var(--text-main);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
 
-    <style>
-        /* Custom Academic Styling */
-        body {
-            font-family: 'Inter', 'Noto Sans TC', sans-serif;
-            background-color: #fcfbf7;
-            color: #1a202c;
-        }
+    a {
+      color: var(--uk-navy);
+      text-decoration: none;
+      transition: var(--transition);
+    }
 
-        .academic-header-border {
-            border-bottom: 3px solid #c5a059;
-            box-shadow: 0 4px 20px rgba(12, 35, 64, 0.08);
-        }
+    a:hover {
+      color: var(--uk-gold-dark);
+    }
 
-        .gold-accent-line {
-            background: linear-gradient(90deg, #990000 0%, #c5a059 50%, #0c2340 100%);
-        }
+    /* 1. TOP UTILITY BAR */
+    .top-bar {
+      background-color: var(--uk-navy-dark);
+      color: #e2e8f0;
+      font-size: 0.825rem;
+      border-bottom: 1px solid rgba(197, 160, 89, 0.25);
+    }
 
-        .gold-border-card {
-            border: 1px solid rgba(197, 160, 89, 0.3);
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-        }
+    .top-bar-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 6px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
-        .gold-border-card:hover {
-            border-color: #c5a059;
-            transform: translateY(-4px);
-            box-shadow: 0 12px 28px -6px rgba(12, 35, 64, 0.15);
-        }
+    .top-links {
+      display: flex;
+      gap: 18px;
+      list-style: none;
+    }
 
-        /* Subtle London Crest Pattern */
-        .academic-bg-pattern {
-            background-color: #0c2340;
-            background-image: radial-gradient(rgba(197, 160, 89, 0.12) 1px, transparent 0);
-            background-size: 24px 24px;
-        }
+    .top-links a {
+      color: #cbd5e1;
+      font-size: 0.825rem;
+    }
 
-        /* Modal Blur */
-        .modal-backdrop {
-            backdrop-filter: blur(8px);
-            background-color: rgba(6, 19, 36, 0.75);
-        }
+    .top-links a:hover {
+      color: var(--uk-gold-light);
+    }
 
-        /* Font Size Control Modes */
-        .font-size-sm { font-size: 14px; }
-        .font-size-md { font-size: 16px; }
-        .font-size-lg { font-size: 18px; }
-    </style>
+    .top-actions {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
 
-<body id="app-root" class="font-size-md antialiased text-gray-800 flex flex-col min-h-screen">
+    .lang-switcher {
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 2px 8px;
+      border-radius: 2px;
+      font-size: 0.75rem;
+      color: #fff;
+      background: transparent;
+      cursor: pointer;
+    }
 
-    <!-- Top Academic Utility Bar -->
-    <div class="bg-navy-950 text-gray-300 text-xs py-2 px-4 border-b border-gold-500/20">
-        <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
-            <div class="flex items-center space-x-4">
-                <span class="tracking-wide uppercase text-gold-400 font-semibold"><i class="fa-solid font-normal fa-graduation-cap mr-1"></i> Department of Business Management</span>
-                <span class="hidden md:inline text-gray-500">|</span>
-                <span class="hidden md:inline text-gray-400">慈濟大學 經營管理學系</span>
-            </div>
-            
-            <div class="flex items-center space-x-6">
-                <!-- Text Size Adjuster (Preserved from original TCU site) -->
-                <div class="flex items-center space-x-1 bg-navy-900 border border-gold-500/30 rounded px-2 py-0.5">
-                    <span class="text-xs text-gray-400 mr-1">字體大小:</span>
-                    <button onclick="setFontSize('sm')" id="btn-font-sm" class="px-1.5 py-0.5 rounded text-xs hover:text-gold-400 font-semibold transition">小</button>
-                    <span class="text-gray-600">|</span>
-                    <button onclick="setFontSize('md')" id="btn-font-md" class="px-1.5 py-0.5 rounded text-xs text-gold-400 font-bold hover:text-gold-300 transition">中</button>
-                    <span class="text-gray-600">|</span>
-                    <button onclick="setFontSize('lg')" id="btn-font-lg" class="px-1.5 py-0.5 rounded text-xs hover:text-gold-400 font-semibold transition">大</button>
-                </div>
+    /* 2. MAIN HEADER & BRANDING */
+    .main-header {
+      background-color: var(--uk-navy);
+      color: #ffffff;
+      box-shadow: var(--shadow-md);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
 
-                <div class="hidden sm:flex items-center space-x-3 text-xs">
-                    <a href="https://mdm.tcu.edu.tw/" target="_blank" class="hover:text-gold-400 transition"><i class="fa-solid fa-house mr-1"></i> 系所首頁</a>
-                    <a href="#" class="hover:text-gold-400 transition"><i class="fa-solid fa-globe mr-1"></i> English</a>
-                </div>
-            </div>
-        </div>
-    </div>
+    .header-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 16px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
-    <!-- Main Header / London Academic Crest Navbar -->
-    <header class="bg-navy-900 text-white sticky top-0 z-40 academic-header-border">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-            
-            <!-- Branding Coat of Arms & Title -->
-            <div class="flex items-center space-x-4">
-                <!-- Academic Crest Emblem -->
-                <div class="w-12 h-12 rounded-full border-2 border-gold-500 bg-navy-950 flex items-center justify-center shadow-inner flex-shrink-0">
-                    <i class="fa-solid fa-landmark text-gold-400 text-xl"></i>
-                </div>
-                <div>
-                    <div class="flex items-center space-x-2">
-                        <span class="font-serif tracking-widest text-xs uppercase text-gold-400 font-semibold">TZU CHI UNIVERSITY</span>
-                        <span class="bg-crimson-800 text-white text-[10px] px-1.5 py-0.5 font-sans tracking-wider rounded uppercase font-bold">EST. 1994</span>
-                    </div>
-                    <h1 class="font-serif text-xl sm:text-2xl font-bold tracking-tight text-white leading-tight">
-                        經營管理學系 <span class="text-gold-400 font-light hidden sm:inline">|</span> <span class="font-serif italic font-normal text-base text-gray-300 block sm:inline">Department of Business Management</span>
-                    </h1>
-                </div>
-            </div>
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
 
-            <!-- Quick Navigation Badge -->
-            <div class="hidden lg:flex items-center space-x-6 text-sm">
+    .crest-icon {
+      width: 48px;
+      height: 48px;
+      background: linear-gradient(135deg, var(--uk-gold), var(--uk-gold-dark));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-serif);
+      font-weight: 900;
+      color: var(--uk-navy-dark);
+      font-size: 1.25rem;
+      border: 2px solid #ffffff;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    .brand-title h1 {
+      font-family: var(--font-serif);
+      font-size: 1.35rem;
+      letter-spacing: 0.5px;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1.2;
+    }
+
+    .brand-title p {
+      font-size: 0.75rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--uk-gold-light);
+      margin-top: 2px;
+    }
+
+    .nav-menu {
+      display: flex;
+      list-style: none;
+      gap: 24px;
+    }
+
+    .nav-item {
+      position: relative;
+    }
+
+    .nav-link {
+      color: #ffffff;
+      font-weight: 600;
+      font-size: 0.95rem;
+      padding: 8px 4px;
+      display: inline-block;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background-color: var(--uk-gold);
+      transition: var(--transition);
+    }
+
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      width: 100%;
+    }
+
+    /* 3. HERO BANNER */
+    .hero-section {
+      background: linear-gradient(rgba(0, 33, 71, 0.88), rgba(0, 21, 48, 0.94)),
+                  url('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+      color: #ffffff;
+      padding: 80px 24px 90px;
+      border-bottom: 4px solid var(--uk-gold);
+      text-align: center;
+    }
+
+    .hero-content {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background-color: var(--uk-crimson);
+      color: #ffffff;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      padding: 6px 16px;
+      border-radius: 2px;
+      margin-bottom: 20px;
+    }
+
+    .hero-title {
+      font-family: var(--font-serif);
+      font-size: 2.75rem;
+      line-height: 1.25;
+      font-weight: 900;
+      margin-bottom: 20px;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    }
+
+    .hero-subtitle {
+      font-size: 1.15rem;
+      color: #cbd5e1;
+      max-width: 750px;
+      margin: 0 auto 32px;
+      font-weight: 400;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 28px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: var(--transition);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .btn-gold {
+      background-color: var(--uk-gold);
+      color: var(--uk-navy-dark);
+      border: 1px solid var(--uk-gold);
+    }
+
+    .btn-gold:hover {
+      background-color: var(--uk-gold-light);
+      color: var(--uk-navy-dark);
+      box-shadow: 0 4px 12px rgba(197, 160, 89, 0.4);
+    }
+
+    .btn-outline {
+      background-color: transparent;
+      color: #ffffff;
+      border: 1px solid #ffffff;
+    }
+
+    .btn-outline:hover {
+      background-color: #ffffff;
+      color: var(--uk-navy);
+    }
+
+    /* 4. STATS STRIP */
+    .stats-strip {
+      background-color: #ffffff;
+      border-bottom: 1px solid var(--border-light);
+      margin-top: -30px;
+      position: relative;
+      z-index: 10;
+      max-width: 1100px;
+      margin-left: auto;
+      margin-right: auto;
+      border-radius: 4px;
+      box-shadow: var(--shadow-md);
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      text-align: center;
+      padding: 24px;
+    }
+
+    .stat-item {
+      padding: 12px;
+      border-right: 1px solid var(--border-light);
+    }
+
+    .stat-item:last-child {
+      border-right: none;
+    }
+
+    .stat-num {
+      font-family: var(--font-serif);
+      font-size: 2rem;
+      font-weight: 900;
+      color: var(--uk-navy);
+    }
+
+    .stat-label {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-weight: 600;
+      margin-top: 4px;
+    }
+
+    /* 5. MAIN CONTAINER & SECTIONS */
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 60px 24px;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .section-title h2 {
+      font-family: var(--font-serif);
+      font-size: 2.2rem;
+      color: var(--uk-navy);
+      position: relative;
+      display: inline-block;
+      padding-bottom: 12px;
+    }
+
+    .section-title h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 3px;
+      background-color: var(--uk-gold);
+    }
+
+    .section-title p {
+      color: var(--text-muted);
+      margin-top: 8px;
+      font-size: 1rem;
+    }
+
+    /* 6. NEWS & ANNOUNCEMENTS SECTION */
+    .news-wrapper {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      border-radius: 4px;
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+    }
+
+    .news-header {
+      background-color: var(--uk-navy);
+      color: #ffffff;
+      padding: 20px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .news-tabs {
+      display: flex;
+      gap: 8px;
+    }
+
+    .tab-btn {
+      background: rgba(255, 255, 255, 0.1);
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 8px 16px;
+      border-radius: 2px;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .tab-btn:hover,
+    .tab-btn.active {
+      background: var(--uk-gold);
+      color: var(--uk-navy-dark);
+      font-weight: 700;
+      border-color: var(--uk-gold);
+    }
+
+    .news-search {
+      position: relative;
+    }
+
+    .news-search input {
+      padding: 8px 14px;
+      padding-right: 32px;
+      border-radius: 2px;
+      border: 1px solid rgba(255,255,255,0.3);
+      background: rgba(255,255,255,0.95);
+      font-size: 0.85rem;
+      outline: none;
+    }
+
+    .news-list {
+      list-style: none;
+      divide-y: 1px solid var(--border-light);
+    }
+
+    .news-item {
+      padding: 20px 24px;
+      border-bottom: 1px solid var(--border-light);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      transition: var(--transition);
+      cursor: pointer;
+    }
+
+    .news-item:hover {
+      background-color: #f8fafc;
+    }
+
+    .news-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 180px;
+    }
+
+    .news-date {
+      font-family: var(--font-sans);
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--uk-gold-dark);
+      background: #fef3c7;
+      padding: 4px 10px;
+      border-radius: 2px;
+    }
+
+    .news-category {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--uk-navy);
+      border: 1px solid var(--uk-navy);
+      padding: 2px 6px;
+      border-radius: 2px;
+    }
+
+    .news-title-text {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text-main);
+      flex-grow: 1;
+    }
+
+    .news-item:hover .news-title-text {
+      color: var(--uk-navy);
+      text-decoration: underline;
+    }
+
+    .news-arrow {
+      color: var(--uk-gold-dark);
+      font-weight: bold;
+    }
+
+    /* 7. HONORS & ACHIEVEMENTS SPOTLIGHT */
+    .honors-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+      margin-top: 30px;
+    }
+
+    .honor-card {
+      background-color: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      border-top: 3px solid var(--uk-navy);
+      padding: 24px;
+      border-radius: 2px;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .honor-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+      border-top-color: var(--uk-gold);
+    }
+
+    .honor-tag {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--uk-crimson);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+
+    .honor-card h3 {
+      font-family: var(--font-serif);
+      font-size: 1.2rem;
+      color: var(--uk-navy);
+      margin-bottom: 12px;
+      line-height: 1.4;
+    }
+
+    .honor-card p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    .honor-footer {
+      font-size: 0.8rem;
+      color: var(--text-light);
+      border-top: 1px solid #f1f5f9;
+      padding-top: 12px;
+      font-weight: 500;
+    }
+
+    /* 8. FACULTY DIRECTORY */
+    .faculty-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 24px;
+    }
+
+    .faculty-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      border-radius: 2px;
+      padding: 24px;
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+    }
+
+    .faculty-card:hover {
+      box-shadow: var(--shadow-md);
+      border-color: var(--uk-gold);
+    }
+
+    .faculty-avatar {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      background-color: var(--uk-navy);
+      color: var(--uk-gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px;
+      font-family: var(--font-serif);
+      font-size: 1.8rem;
+      font-weight: 700;
+      border: 3px solid var(--uk-gold-light);
+    }
+
+    .faculty-name {
+      font-family: var(--font-serif);
+      font-size: 1.15rem;
+      color: var(--uk-navy);
+      font-weight: 700;
+    }
+
+    .faculty-title {
+      font-size: 0.85rem;
+      color: var(--uk-gold-dark);
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .faculty-expertise {
+      font-size: 0.825rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+      line-height: 1.4;
+    }
+
+    /* 9. FOOTER */
+    .site-footer {
+      background-color: var(--uk-navy-dark);
+      color: #94a3b8;
+      border-top: 4px solid var(--uk-gold);
+      padding-top: 60px;
+      padding-bottom: 30px;
+    }
+
+    .footer-grid {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    .footer-col h4 {
+      font-family: var(--font-serif);
+      color: #ffffff;
+      font-size: 1.1rem;
+      margin-bottom: 20px;
+      position: relative;
+      padding-bottom: 8px;
+    }
+
+    .footer-col h4::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 30px;
+      height: 2px;
+      background-color: var(--uk-gold);
+    }
+
+    .footer-col p, .footer-col li {
+      font-size: 0.875rem;
+      line-height: 1.7;
+      margin-bottom: 8px;
+    }
+
+    .footer-links {
+      list-style: none;
+    }
+
+    .footer-links a {
+      color: #cbd5e1;
+    }
+
+    .footer-links a:hover {
+      color: var(--uk-gold-light);
+      padding-left: 4px;
+    }
+
+    .footer-bottom {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 24px 24px 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      font-size: 0.8rem;
+    }
+
+    /* MODAL POPUP */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 21, 48, 0.75);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      opacity: 0;
+      pointer-events: none;
+      transition: var(--transition);
+      backdrop-filter: blur(4px);
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-box {
+      background: #ffffff;
+      width: 90%;
+      max-width: 650px;
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      transform: translateY(20px);
+      transition: var(--transition);
+      border-top: 5px solid var(--uk-navy);
+    }
+
+    .modal-overlay.active .modal-box {
+      transform: translateY(0);
+    }
+
+    .modal-header {
+      background-color: var(--bg-cream);
+      padding: 20px 24px;
+      border-bottom: 1px solid var(--border-light);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .modal-header h3 {
+      font-family: var(--font-serif);
+      color: var(--uk-navy);
+      font-size: 1.25rem;
+    }
+
+    .modal-close {
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: var(--text-muted);
+      cursor: pointer;
+    }
+
+    .modal-body {
+      padding: 24px;
+      font-size: 0.95rem;
+      color: var(--text-main);
+      line-height: 1.7;
+    }
+
+    /* RESPONSIVE DESIGN */
+    @media (max-width: 768px) {
+      .hero-title {
+        font-size: 2rem;
+      }
+      .nav-menu {
+        display: none;
+      }
+      .stats-strip {
+        grid-template-columns: 1fr 1fr;
+      }
+      .news-header {
+        flex-direction: column;
+        align-items: stretch;
+      }
+    }
+  </style>
 </head>
-                <a href="index.html" class="text-gray-200 hover:text-gold-400 transition font-medium">回首頁</a>
+<body>
 
-                <a href="#showcase-grid" class="text-gray-200 hover:text-gold-400 transition font-medium">學生作品展覽</a>
-                <a href="#impact-stats" class="text-gray-200 hover:text-gold-400 transition font-medium">專題成果數據</a>
-                <a href="#academic-advisors" class="text-gray-200 hover:text-gold-400 transition font-medium">指導團隊</a>
-                <a href="#showcase-grid" class="bg-crimson-800 hover:bg-crimson-700 text-white px-4 py-2 rounded text-xs font-semibold uppercase tracking-wider transition shadow-md border border-crimson-900">
-                    探訪作品集
-                </a>
-            </div>
+  <!-- 1. TOP UTILITY BAR -->
+  <div class="top-bar">
+    <div class="top-bar-inner">
+      <ul class="top-links">
+        <li><a href="https://www.tcu.edu.tw" target="_blank">慈濟大學首頁</a></li>
+        <li><a href="#news">最新消息</a></li>
+        <li><a href="#honors">卓越榮譽</a></li>
+        <li><a href="#faculty">師資陣容</a></li>
+        <li><a href="#contact">聯絡資訊</a></li>
+        <li><a href="studentswork.html">學生作品</a></li>
+      </ul>
+      <div class="top-actions">
+        <button class="lang-switcher" onclick="alert('Switching Language to English...')">EN / 繁中</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. MAIN HEADER -->
+  <header class="main-header">
+    <div class="header-container">
+      <div class="brand-logo">
+        <div class="crest-icon">TCU</div>
+        <div class="brand-title">
+          <h1>慈濟大學 經營管理學系</h1>
+          <p>Department of Business Management</p>
         </div>
-        <div class="h-1 gold-accent-line"></div>
-    </header>
+      </div>
+      <nav>
+        <ul class="nav-menu">
+          <li class="nav-item"><a href="#about" class="nav-link active">系所簡介</a></li>
+          <li class="nav-item"><a href="#news" class="nav-link">最新動態</a></li>
+          <li class="nav-item"><a href="#honors" class="nav-link">競賽與榮譽</a></li>
+          <li class="nav-item"><a href="#faculty" class="nav-link">師資團隊</a></li>
+          <li class="nav-item"><a href="#contact" class="nav-link">招生與聯絡</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-    <!-- Hero Academic Banner -->
-    <section class="academic-bg-pattern text-white relative py-16 px-4 sm:px-6 lg:px-8 border-b border-gold-500/30 overflow-hidden">
-        <div class="absolute -right-20 -bottom-20 w-96 h-96 rounded-full bg-crimson-900/20 blur-3xl pointer-events-none"></div>
-        <div class="absolute left-10 top-0 w-64 h-64 rounded-full bg-gold-500/10 blur-3xl pointer-events-none"></div>
+  <!-- 3. HERO BANNER -->
+  <section class="hero-section" id="about">
+    <div class="hero-content">
+      <span class="hero-badge">Excellence in Management & Innovation</span>
+      <h2 class="hero-title">培養具國際視野與社會關懷的<br>商業與永續管理人才</h2>
+      <p class="hero-subtitle">結合商管理論、企業實作與在地永續發展，慈濟大學經營管理學系致力於推動跨領域創新與地方創生，打造卓越學習體驗。</p>
+      <div class="hero-cta">
+        <a href="#news" class="btn btn-gold">最新公告與競賽成果</a>
+        <a href="#contact" class="btn btn-outline">了解招生管道</a>
+      </div>
+    </div>
+  </section>
 
-        <div class="max-w-7xl mx-auto relative z-10">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-                
-                <div class="lg:col-span-8">
-                    <div class="inline-flex items-center space-x-2 bg-gold-500/10 border border-gold-500/30 rounded-full px-3 py-1 mb-4">
-                        <i class="fa-solid fa-award text-gold-400 text-xs"></i>
-                        <span class="text-gold-300 text-xs font-semibold uppercase tracking-wider">ACADEMIC EXCELLENCE & PRACTICAL SHOWCASE</span>
-                    </div>
-                    <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white mb-4 leading-tight">
-                        學習成果與學生專題作品集
-                        <span class="block text-xl sm:text-2xl font-serif italic text-gold-400 font-normal mt-1">Student Projects, Social Innovation & Digital Strategy</span>
-                    </h2>
-                    <p class="text-gray-300 text-base sm:text-lg max-w-3xl leading-relaxed mb-6 font-light">
-                        展現慈濟大學經營管理學系學生在國際行銷、花冬好農地方創生聚落、AI 顧客旅程數位共創及永續循環經濟領域之實務研究與創新企劃成果。以倫敦頂尖學術標準，培育具國際視野與社會關懷之當代管理精英。
-                    </p>
-                    <div class="flex flex-wrap gap-4 text-xs sm:text-sm">
-                        <div class="flex items-center space-x-2 text-gray-300">
-                            <i class="fa-solid fa-check text-gold-400"></i>
-                            <span>永續 ESG 實務企劃</span>
-                        </div>
-                        <div class="flex items-center space-x-2 text-gray-300">
-                            <i class="fa-solid fa-check text-gold-400"></i>
-                            <span>花東地方品牌創生 (Agrihubbers)</span>
-                        </div>
-                        <div class="flex items-center space-x-2 text-gray-300">
-                            <i class="fa-solid fa-check text-gold-400"></i>
-                            <span>跨國國際行銷溝通</span>
-                        </div>
-                    </div>
-                </div>
+  <!-- 4. STATS STRIP -->
+  <div class="stats-strip">
+    <div class="stat-item">
+      <div class="stat-num">100%</div>
+      <div class="stat-label">專題實作參與率</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">TOP 2</div>
+      <div class="stat-label">2025 全國經管專題競賽</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">USA</div>
+      <div class="stat-label">紐約海外實習計畫</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">NTU / NCKU</div>
+      <div class="stat-label">頂尖國立大學升學肯定</div>
+    </div>
+  </div>
 
-                <!-- Academic Quick Metrics Card -->
-                <div class="lg:col-span-4">
-                    <div class="bg-navy-950/80 border border-gold-500/40 rounded-lg p-6 shadow-2xl relative">
-                        <div class="absolute -top-3 right-4 bg-crimson-800 text-gold-300 text-[10px] uppercase font-bold tracking-widest px-2.5 py-0.5 rounded border border-gold-500/30">
-                            Excellence Stats
-                        </div>
-                        <h3 class="font-serif text-lg font-bold text-gold-400 border-b border-gray-700 pb-2 mb-4">專題競賽與實務亮點</h3>
-                        <div class="space-y-4">
-                            <div class="flex justify-between items-center">
-                                <span class="text-gray-300 text-sm">全國經營管理專題獎項</span>
-                                <span class="font-serif text-xl font-bold text-white">15+ 筆</span>
-                            </div>
-                            <div class="w-full bg-gray-800 h-1.5 rounded-full overflow-hidden">
-                                <div class="bg-gold-500 h-full w-[88%]"></div>
-                            </div>
+  <!-- 5. MAIN CONTENT AREA -->
+  <div class="container">
 
-                            <div class="flex justify-between items-center">
-                                <span class="text-gray-300 text-sm">地方創生合作品牌 (Agrihubbers)</span>
-                                <span class="font-serif text-xl font-bold text-white">10+ 品牌</span>
-                            </div>
-                            <div class="w-full bg-gray-800 h-1.5 rounded-full overflow-hidden">
-                                <div class="bg-crimson-700 h-full w-[92%]"></div>
-                            </div>
+    <!-- NEWS & ANNOUNCEMENTS SECTION -->
+    <section id="news" style="margin-bottom: 80px;">
+      <div class="section-title">
+        <h2>最新動態與公告</h2>
+        <p>News & Departmental Announcements</p>
+      </div>
 
-                            <div class="flex justify-between items-center">
-                                <span class="text-gray-300 text-sm">國際跨國專題提案參與</span>
-                                <span class="font-serif text-xl font-bold text-white">100% 覆蓋</span>
-                            </div>
-                            <div class="w-full bg-gray-800 h-1.5 rounded-full overflow-hidden">
-                                <div class="bg-gold-400 h-full w-[100%]"></div>
-                            </div>
-                        </div>
-                        <div class="mt-5 pt-3 border-t border-gray-800 text-center">
-                            <span class="text-xs text-gray-400 italic">Department of Business Management Academic Portfolio</span>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
+      <div class="news-wrapper">
+        <div class="news-header">
+          <div class="news-tabs">
+            <button class="tab-btn active" onclick="filterNews('all', this)">全部公告</button>
+            <button class="tab-btn" onclick="filterNews('honors', this)">榮譽榜</button>
+            <button class="tab-btn" onclick="filterNews('events', this)">演講與校外教學</button>
+            <button class="tab-btn" onclick="filterNews('external', this)">校外來文</button>
+          </div>
+          <div class="news-search">
+            <input type="text" id="newsInput" placeholder="搜尋關鍵字..." onkeyup="searchNews()">
+          </div>
         </div>
+
+
+<img src="553.png" width="350" height="210"><img src="652.png" height="210"><img src="168.png" width="350" height="210">
+
+        <ul class="news-list" id="newsList">
+          <li class="news-item" data-category="honors" onclick="openModal('恭賀「嶼食織心」團隊', '由本系學生周禹嫻、林芷萱、高翊翔、吳進福及施柏言組成之團隊「嶼食織心」，在林信宏老師指導下，成功入選花蓮縣政府青年發展中心辦理之「2026花蓮青年鏈結地方產業專題成果補助計畫」，獲得新臺幣25,000元行動獎勵金！')">
+            <div class="news-meta">
+              <span class="news-date">2026-06-02</span>
+              <span class="news-category">榮譽榜</span>
+            </div>
+            <div class="news-title-text">【本系榮譽】恭賀本系團隊「嶼食織心」入選2026花蓮青年鏈結地方產業專題成果補助計畫</div>
+            <div class="news-arrow">→</div>
+          </li>
+
+          <li class="news-item" data-category="honors" onclick="openModal('2025全國經營管理專題競賽', '恭喜蘇美惠老師指導團隊學生簡翊丞、呂軒羽、鄒睿廷、黃柏軒、王梓圳以「黑水虻處理沼渣廢棄物之可行性評估」榮獲管理組第二名！另外林俊銘老師指導團隊「生成式AI輔助教育訓練試題設計」榮獲佳作。')">
+            <div class="news-meta">
+              <span class="news-date">2026-05-20</span>
+              <span class="news-category">榮譽榜</span>
+            </div>
+            <div class="news-title-text">【本系榮譽】賀！本系學生團隊榮獲「2025全國經營管理專題競賽」管理組第二名及佳作</div>
+            <div class="news-arrow">→</div>
+          </li>
+
+          <li class="news-item" data-category="events" onclick="openModal('桌遊店創業與服務經營講座', '邀請業界專家分享從桌遊經營、顧客體驗到品牌構建的實務經驗，歡迎全系師生參加。')">
+            <div class="news-meta">
+              <span class="news-date">2026-10-06</span>
+              <span class="news-category">演講教學</span>
+            </div>
+            <div class="news-title-text">【校外教學公告】『玩』出一門生意：桌遊店創業與服務經營實務分享</div>
+            <div class="news-arrow">→</div>
+          </li>
+
+          <li class="news-item" data-category="events" onclick="openModal('自媒體影像拍攝講座', '手機也能拍出專業內容：邀請自媒體專家講授影像拍攝構圖與流量駭客思維。')">
+            <div class="news-meta">
+              <span class="news-date">2026-05-18</span>
+              <span class="news-category">演講教學</span>
+            </div>
+            <div class="news-title-text">【本系演講公告】手機也能拍出專業內容：自媒體影像拍攝與構圖技巧</div>
+            <div class="news-arrow">→</div>
+          </li>
+
+          <li class="news-item" data-category="external" onclick="openModal('智慧永續創新遊程競賽', '2026全國大專院校【智慧永續創新遊程】競賽收件中，歡迎本系同學踴躍組隊報名參與！')">
+            <div class="news-meta">
+              <span class="news-date">2026-10-07</span>
+              <span class="news-category">校外來文</span>
+            </div>
+            <div class="news-title-text">【校外來文公告】2026全國大專院校【智慧永續創新遊程】競賽訊息</div>
+            <div class="news-arrow">→</div>
+          </li>
+        </ul>
+      </div>
     </section>
 
-    <!-- Main Content Area -->
-    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-10" id="showcase-grid">
+    <!-- HONORS & FEATURED PROJECTS -->
+    <section id="honors" style="margin-bottom: 80px;">
+      <div class="section-title">
+        <h2>亮點成就與競賽榮耀</h2>
+        <p>Outstanding Student Achievements & Regional Impact</p>
+      </div>
 
-        <!-- Controls Header: Category Tabs + Search -->
-        <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-4 md:p-6 mb-8">
-            <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 border-b border-gray-200 pb-5">
-                <div>
-                    <h3 class="font-serif text-xl font-bold text-navy-900 flex items-center">
-                        <span class="w-3 h-3 bg-crimson-800 rounded-full inline-block mr-2"></span>
-                        學生成果主題分類 <span class="text-sm font-sans font-normal text-gray-500 ml-2">(Project Categories)</span>
-                    </h3>
-                    <p class="text-xs text-gray-500 mt-1">點擊下方頁籤篩選不同管理領域之學生優秀專題企劃</p>
-                </div>
-
-                <!-- Live Search Box -->
-                <div class="relative min-w-[260px] sm:min-w-[320px]">
-                    <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-sm"></i>
-                    <input type="text" id="searchInput" onkeyup="filterProjects()" placeholder="搜尋關鍵字（如：明記咖啡、黑水虻、AI...）" 
-                           class="w-full pl-9 pr-4 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:border-navy-900 focus:ring-1 focus:ring-navy-900 transition">
-                </div>
-            </div>
-
-            <!-- Category Filter Buttons -->
-            <div class="flex flex-wrap gap-2 mt-4" id="categoryFilters">
-                <button onclick="setCategory('all')" data-cat="all" class="cat-btn bg-navy-900 text-gold-400 font-semibold px-4 py-2 rounded-md text-xs sm:text-sm border border-navy-900 transition shadow-sm">
-                    <i class="fa-solid fa-border-all mr-1.5"></i>全部作品 (All Projects)
-                </button>
-                <button onclick="setCategory('international')" data-cat="international" class="cat-btn bg-gray-100 text-gray-700 hover:bg-navy-900 hover:text-white px-4 py-2 rounded-md text-xs sm:text-sm border border-transparent transition">
-                    <i class="fa-solid fa-earth-americas mr-1.5 text-crimson-800"></i>國際化企劃 (International)
-                </button>
-                <button onclick="setCategory('sustainability')" data-cat="sustainability" class="cat-btn bg-gray-100 text-gray-700 hover:bg-navy-900 hover:text-white px-4 py-2 rounded-md text-xs sm:text-sm border border-transparent transition">
-                    <i class="fa-solid fa-seedling mr-1.5 text-green-700"></i>地方創生 Agrihubbers (Local Dev)
-                </button>
-                <button onclick="setCategory('ai-digital')" data-cat="ai-digital" class="cat-btn bg-gray-100 text-gray-700 hover:bg-navy-900 hover:text-white px-4 py-2 rounded-md text-xs sm:text-sm border border-transparent transition">
-                    <i class="fa-solid fa-brain mr-1.5 text-blue-700"></i>數位AI與品牌 (AI & Strategy)
-                </button>
-                <button onclick="setCategory('competition')" data-cat="competition" class="cat-btn bg-gray-100 text-gray-700 hover:bg-navy-900 hover:text-white px-4 py-2 rounded-md text-xs sm:text-sm border border-transparent transition">
-                    <i class="fa-solid fa-trophy mr-1.5 text-gold-600"></i>全國專題競賽 (Competitions)
-                </button>
-            </div>
+      <div class="honors-grid">
+        <div class="honor-card">
+          <div>
+            <div class="honor-tag">地方創生與專題補助</div>
+            <h3>「嶼食織心」入選 2026 花蓮青年鏈結計畫</h3>
+            <p>由周禹嫻、林芷萱、高翊翔、吳進福及施柏言同學組成，林信宏老師指導，獲得 25,000 元行動獎勵金，結合地方產業與永續議題。</p>
+          </div>
+          <div class="honor-footer">指導老師：林信宏 教授</div>
         </div>
 
-        <!-- Filter Count Indicator -->
-        <div class="flex justify-between items-center mb-6">
-            <span class="text-sm font-medium text-gray-600" id="resultCounter">
-                顯示 <span class="font-bold text-navy-900" id="displayedCount">6</span> 項專題成果
-            </span>
-            <div class="text-xs text-gray-500 flex items-center space-x-1">
-                <span>排序: 依最新學年度標籤</span>
-            </div>
+        <div class="honor-card">
+          <div>
+            <div class="honor-tag">全國專題競賽全國第二</div>
+            <h3>黑水虻處理沼渣廢棄物之可行性評估</h3>
+            <p>簡翊丞、呂軒羽、鄒睿廷、黃柏軒、王梓圳同學團隊，在蘇美惠老師指導下，以循環農業與廢棄物再利用奪得全國第二名佳績。</p>
+          </div>
+          <div class="honor-footer">指導老師：蘇美惠 教授</div>
         </div>
 
-        <!-- Projects Grid Showcase Container -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="projectsGrid">
-            <!-- Cards rendered dynamically via JS -->
+        <div class="honor-card">
+          <div>
+            <div class="honor-tag">頂尖研究所升學成果</div>
+            <h3>畢業校友錄取台大博士班與成大碩士班</h3>
+            <p>112年度畢業生陳麗燕錄取國立臺灣大學氣候變遷與永續發展國際學位學程博士班；饒景棠錄取國立成功大學國際經營管理研究所。</p>
+          </div>
+          <div class="honor-footer">學術升學卓越表現</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FACULTY SECTION -->
+    <section id="faculty" style="margin-bottom: 60px;">
+      <div class="section-title">
+        <h2>優秀師資陣容</h2>
+        <p>Academic Excellence & Faculty Directory</p>
+      </div>
+
+      <div class="faculty-grid">
+        <div class="faculty-card">
+          <div class="faculty-avatar">林</div>
+          <div class="faculty-name">林珍如 教授</div>
+          <div class="faculty-title">學系主任</div>
+          <div class="faculty-expertise">專長：經營管理、組織行為、人力資源管理、企業倫理</div>
         </div>
 
-        <!-- Empty State -->
-        <div id="noResults" class="hidden text-center py-16 bg-white rounded-lg border border-dashed border-gray-300 my-8">
-            <i class="fa-solid fa-folder-open text-4xl text-gray-300 mb-3"></i>
-            <h4 class="font-serif text-lg font-bold text-navy-900">未找到符合條件的作品</h4>
-            <p class="text-sm text-gray-500 mt-1">請嘗試變更搜尋關鍵字或選擇其他主題分類。</p>
-            <button onclick="resetFilters()" class="mt-4 bg-navy-900 text-gold-400 px-4 py-2 rounded text-xs font-semibold">重設所有篩選</button>
+        <div class="faculty-card">
+          <div class="faculty-avatar">蘇</div>
+          <div class="faculty-name">蘇美惠 教授</div>
+          <div class="faculty-title">專任副教授</div>
+          <div class="faculty-expertise">專長：永續發展、循環經濟、專題實作指導、經營策略</div>
         </div>
 
-        <!-- Department Academic Banner Divider -->
-        <section class="mt-16 bg-academic border border-gold-500/30 rounded-lg p-8 relative overflow-hidden shadow-sm" id="impact-stats">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 text-center">
-                <div class="p-4 border-r-0 md:border-r border-gray-300">
-                    <div class="font-serif text-3xl font-extrabold text-navy-900">100%</div>
-                    <div class="text-xs font-semibold text-crimson-800 uppercase tracking-wider mt-1">實務導向專題研討</div>
-                    <p class="text-xs text-gray-600 mt-1">全體畢業生必修產學專題研究</p>
-                </div>
-                <div class="p-4 border-r-0 md:border-r border-gray-300">
-                    <div class="font-serif text-3xl font-extrabold text-navy-900">Agrihubbers</div>
-                    <div class="text-xs font-semibold text-crimson-800 uppercase tracking-wider mt-1">花冬好農在地聚落</div>
-                    <p class="text-xs text-gray-600 mt-1">深耕花東永續農創與品牌賦能</p>
-                </div>
-                <div class="p-4 border-r-0 md:border-r border-gray-300">
-                    <div class="font-serif text-3xl font-extrabold text-navy-900">Global</div>
-                    <div class="text-xs font-semibold text-crimson-800 uppercase tracking-wider mt-1">印尼與跨國實務班</div>
-                    <p class="text-xs text-gray-600 mt-1">跨文化行銷企劃與國際共創</p>
-                </div>
-                <div class="p-4">
-                    <div class="font-serif text-3xl font-extrabold text-navy-900">AI-Driven</div>
-                    <div class="text-xs font-semibold text-crimson-800 uppercase tracking-wider mt-1">數位品牌旅程</div>
-                    <p class="text-xs text-gray-600 mt-1">融合新一代 AI 工具之商業經營</p>
-                </div>
-            </div>
-        </section>
-
-    </main>
-
-    <!-- Project Detail Interactive Modal -->
-    <div id="projectModal" class="fixed inset-0 z-50 hidden modal-backdrop flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
-        <div class="bg-white rounded-lg shadow-2xl max-w-4xl w-full border border-gold-500 overflow-hidden transform transition-all my-8 relative">
-            
-            <!-- Modal Header with Academic Stripe -->
-            <div class="bg-navy-900 text-white p-6 relative border-b-2 border-gold-500">
-                <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-300 hover:text-gold-400 text-xl w-8 h-8 rounded-full bg-navy-950 flex items-center justify-center transition">
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
-                <div class="flex items-center space-x-2 text-xs font-semibold text-gold-400 uppercase tracking-widest mb-1">
-                    <span id="modalCategoryBadge">CATEGORY</span>
-                    <span>•</span>
-                    <span id="modalYear">ACADEMIC YEAR</span>
-                </div>
-                <h3 id="modalTitle" class="font-serif text-2xl sm:text-3xl font-bold text-white leading-tight"></h3>
-                <p id="modalSubTitle" class="text-sm font-serif italic text-gray-300 mt-1"></p>
-            </div>
-
-            <!-- Modal Content Body -->
-            <div class="p-6 sm:p-8 space-y-6 max-h-[70vh] overflow-y-auto">
-                
-                <!-- Project Image & Highlight Box -->
-                <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-start">
-                    <div class="md:col-span-6 rounded-lg overflow-hidden border border-gray-200 shadow-sm">
-                        <img id="modalImage" src="" alt="Project Banner" class="w-full h-56 object-cover">
-                    </div>
-                    
-                    <div class="md:col-span-6 bg-parchment p-5 rounded-lg border border-gold-500/30 space-y-3">
-                        <h4 class="font-serif text-sm font-bold text-navy-900 uppercase tracking-wider border-b border-gray-300 pb-2">
-                            <i class="fa-solid fa-circle-info text-crimson-800 mr-1.5"></i> 專題摘要與指標 (Executive Summary)
-                        </h4>
-                        <div class="text-xs space-y-2 text-gray-700">
-                            <div><strong class="text-navy-900">指導教授:</strong> <span id="modalAdvisor"></span></div>
-                            <div><strong class="text-navy-900">專題團隊:</strong> <span id="modalTeam"></span></div>
-                            <div><strong class="text-navy-900">實踐場域 / 對象:</strong> <span id="modalClient"></span></div>
-                            <div><strong class="text-navy-900">關鍵成就:</strong> <span id="modalAchievement" class="text-crimson-800 font-semibold"></span></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Detailed Text Sections -->
-                <div class="space-y-4">
-                    <div>
-                        <h4 class="font-serif text-base font-bold text-navy-900 flex items-center">
-                            <i class="fa-solid fa-bullseye text-gold-600 mr-2"></i> 專題背景與管理問題 (Project Background)
-                        </h4>
-                        <p id="modalBackground" class="text-sm text-gray-700 leading-relaxed mt-1 font-light"></p>
-                    </div>
-
-                    <div>
-                        <h4 class="font-serif text-base font-bold text-navy-900 flex items-center">
-                            <i class="fa-solid fa-lightbulb text-crimson-800 mr-2"></i> 策略解決方案與創新點 (Strategic Solution)
-                        </h4>
-                        <p id="modalSolution" class="text-sm text-gray-700 leading-relaxed mt-1 font-light"></p>
-                    </div>
-
-                    <div>
-                        <h4 class="font-serif text-base font-bold text-navy-900 flex items-center">
-                            <i class="fa-solid fa-chart-line text-blue-700 mr-2"></i> 具體成果與社會影響力 (Key Impact)
-                        </h4>
-                        <ul id="modalImpactList" class="list-disc list-inside text-sm text-gray-700 space-y-1 mt-1 pl-1">
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Tags list -->
-                <div class="pt-4 border-t border-gray-200 flex flex-wrap gap-2" id="modalTags">
-                </div>
-            </div>
-
-            <!-- Modal Footer -->
-            <div class="bg-gray-100 px-6 py-4 flex flex-col sm:flex-row justify-between items-center gap-3 border-t border-gray-200 text-xs">
-                <span class="text-gray-500 font-serif italic">Tzu Chi University Dept. of Business Management Student Archive</span>
-                <button onclick="closeModal()" class="bg-navy-900 hover:bg-navy-800 text-white font-semibold px-6 py-2 rounded transition shadow">
-                    關閉視窗 (Close Window)
-                </button>
-            </div>
-
+        <div class="faculty-card">
+          <div class="faculty-avatar">林</div>
+          <div class="faculty-name">林信宏 教授</div>
+          <div class="faculty-title">專任助理教授</div>
+          <div class="faculty-expertise">專長：地方創生、社區營造、產業鏈結、行銷管理</div>
         </div>
+
+        <div class="faculty-card">
+          <div class="faculty-avatar">林</div>
+          <div class="faculty-name">林俊銘 教授</div>
+          <div class="faculty-title">專任助理教授</div>
+          <div class="faculty-expertise">專長：生成式 AI 應用、資訊管理、人力資源培訓</div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- 9. FOOTER -->
+  <footer class="site-footer" id="contact">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>慈濟大學 經營管理學系</h4>
+        <p>Department of Business Management<br>Tzu Chi University</p>
+        <p style="margin-top: 12px; color: var(--uk-gold-light);">秉持慈悲喜捨校訓，培養具國際競爭力與利他精神之管理專業人才。</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>聯絡資訊</h4>
+        <p>地址：970 花蓮市介仁街 67 號</p>
+        <p>電話：03-857-2677 分機 31682</p>
+        <p>電子郵件：ss62@gms.tcu.edu.tw</p>
+        <p>個資窗口：林珍如主任 (#33126)</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>快速連結</h4>
+        <ul class="footer-links">
+          <li><a href="https://www.tcu.edu.tw" target="_blank">慈濟大學首頁</a></li>
+          <li><a href="#about">系所簡介與發展特色</a></li>
+          <li><a href="#honors">學生專題與獲獎報導</a></li>
+          <li><a href="https://www.youtube.com/@_tcust5687" target="_blank">官方 YouTube 頻道</a></li>
+        </ul>
+      </div>
     </div>
 
-    <!-- Academic London Style Footer -->
-    <footer class="bg-navy-950 text-white border-t-4 border-gold-500 mt-auto">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 border-b border-gray-800 pb-10">
-                
-                <!-- Department Info -->
-                <div class="md:col-span-5 space-y-3">
-                    <div class="flex items-center space-x-3">
-                        <div class="w-10 h-10 rounded-full border border-gold-400 bg-navy-900 flex items-center justify-center">
-                            <i class="fa-solid fa-graduation-cap text-gold-400"></i>
-                        </div>
-                        <div>
-                            <h4 class="font-serif font-bold text-base text-white">慈濟大學 經營管理學系</h4>
-                            <p class="text-xs text-gray-400 font-serif italic">Department of Business Management, Tzu Chi University</p>
-                        </div>
-                    </div>
-                    <p class="text-xs text-gray-400 leading-relaxed font-light">
-                        本系結合管理理論與實務創新，致力於培育具備倫理道德、永續觀點、數位科技與國際移動力之全方位管理人才。
-                    </p>
-                    <div class="text-xs text-gold-400 font-medium">
-                        <i class="fa-solid fa-location-dot mr-1"></i> 校址：97004 花蓮市中央路三段701號 (校本部)
-                    </div>
-                </div>
+    <div class="footer-bottom">
+      <div>© 2026 慈濟大學經營管理學系 版權所有 | Tzu Chi University All Rights Reserved.</div>
+      <div>Designed in UK Academic Portal Style</div>
+    </div>
+  </footer>
 
-                <!-- Quick Academic Links -->
-                <div class="md:col-span-3 space-y-2">
-                    <h5 class="font-serif text-sm font-bold text-gold-400 tracking-wider uppercase border-b border-gray-800 pb-2">成果展示鏈結</h5>
-                    <ul class="text-xs space-y-2 text-gray-300">
-                        <li><a href="https://mdm.tcu.edu.tw/p/412-1021-3692.php" target="_blank" class="hover:text-gold-400 transition"><i class="fa-solid fa-angle-right mr-1 text-gold-500"></i> 官方學生作品與活動網頁</a></li>
-                        <li><a href="https://itm.tcu.edu.tw/p/404-1022-58627.php" target="_blank" class="hover:text-gold-400 transition"><i class="fa-solid fa-angle-right mr-1 text-gold-500"></i> 全國經營管理專題競賽獲獎</a></li>
-                        <li><a href="https://mdm.tcu.edu.tw/" target="_blank" class="hover:text-gold-400 transition"><i class="fa-solid fa-angle-right mr-1 text-gold-500"></i> 花冬好農 Agrihubbers 聚落</a></li>
-                    </ul>
-                </div>
+  <!-- MODAL POPUP -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3 id="modalTitle">公告詳細內容</h3>
+        <button class="modal-close" onclick="closeModal()">&times;</button>
+      </div>
+      <div class="modal-body" id="modalBody">
+        內容載入中...
+      </div>
+    </div>
+  </div>
 
-                <!-- Academic Standards -->
-                <div class="md:col-span-4 space-y-3">
-                    <h5 class="font-serif text-sm font-bold text-gold-400 tracking-wider uppercase border-b border-gray-800 pb-2">倫敦學術風格展覽架構</h5>
-                    <p class="text-xs text-gray-400 leading-relaxed font-light">
-                        本展覽頁面採倫敦政治經濟學院 (LSE) 與倫敦大學學院 (UCL) 典雅學術風格設計，呈現嚴謹且深具社會影響力之專題企劃。
-                    </p>
-                    <div class="bg-navy-900 border border-gold-500/20 p-3 rounded text-xs text-gray-300">
-                        <i class="fa-solid fa-shield-halved text-gold-400 mr-1.5"></i>
-                        <span>專題版權歸慈濟大學經營管理學系師生團隊所有</span>
-                    </div>
-                </div>
+  <!-- INTERNAL JAVASCRIPT -->
+  <script>
+    // Tab Filter Logic
+    function filterNews(category, btn) {
+      const buttons = document.querySelectorAll('.tab-btn');
+      buttons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
 
-            </div>
-
-            <div class="pt-6 flex flex-col sm:flex-row justify-between items-center text-xs text-gray-400 gap-2">
-                <div>
-                    &copy; <span id="yearSpan"></span> 慈濟大學經營管理學系 Department of Business Management, TCU. All Rights Reserved.
-                </div>
-                <div class="flex space-x-4">
-                    <a href="#" class="hover:text-gold-400 transition">隱私權政策</a>
-                    <span>•</span>
-                    <a href="#" class="hover:text-gold-400 transition">學術倫理規範</a>
-                    <span>•</span>
-                    <a href="https://mdm.tcu.edu.tw/" target="_blank" class="hover:text-gold-400 transition">系所聯絡電話</a>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- JavaScript Data and Logic -->
-    <script>
-        // Set dynamic year
-        document.getElementById('yearSpan').textContent = new Date().getFullYear();
-
-        // Authentic TCU Department of Business Management Student Projects Data
-        const projectsData = [
-            {
-                id: 'p1',
-                title: '印尼班跨國品牌行銷與文化溝通企劃',
-                subtitle: 'International Marketing Strategy & Cross-Cultural Brand Campaign',
-                category: 'international',
-                categoryLabel: '國際化企劃',
-                badgeBg: 'bg-crimson-800 text-white',
-                image: 'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=800&q=80',
-                year: '111-112 學年度',
-                advisor: '經管系國際行銷教學團隊',
-                team: '印尼國際經營管理專班團隊',
-                client: '東南亞跨國市場與在地特色品牌',
-                achievement: '國際學生成果發表會優等獎',
-                excerpt: '結合印尼留學生與國內學生進行雙向跨文化市場分析，為花東特色產品設計進入印尼與東南亞市場之品牌定位與行銷溝通方案。',
-                background: '隨著新南向政策與花東農特產品國際化需求增加，如何突破語言與文化藩籬，針對東南亞消費市場進行精準品牌行銷，成為在地企業邁向國際的重要課題。',
-                solution: '專題團隊進行深度的印尼消費者行為調研，並結合印尼專班同學的母語與文化優勢，重新包裝產品視覺、撰寫雙語行銷文案，並規劃社群媒體短影音推廣計畫。',
-                impacts: [
-                    '成功設計 3 套適合東南亞伊斯蘭與華人市場的清真品牌包裝文案設計',
-                    '於慈濟大學國際成果發表會吸引超過 300 位師生與外賓參與評估',
-                    '建立跨國學生雙向實務合作模式，提升學生國際商務溝通力'
-                ],
-                tags: ['國際行銷', '印尼專班', '跨文化溝通', '品牌定位']
-            },
-            {
-                id: 'p2',
-                title: '花冬好農 (Agrihubbers) - 明記咖啡品牌創生專題',
-                subtitle: 'Mingji Coffee Re-branding & Local Sustainability Strategy',
-                category: 'sustainability',
-                categoryLabel: '地方創生',
-                badgeBg: 'bg-green-800 text-white',
-                image: 'https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=800&q=80',
-                year: '112 學年度',
-                advisor: '地方創生與社企專題導師群',
-                team: '明記咖啡創生專案組 (經管系四年級)',
-                client: '花蓮在地優質咖啡農戶「明記咖啡」',
-                achievement: '社企聚落花冬好農品牌競賽特優',
-                excerpt: '深入花蓮在地咖啡莊園「明記咖啡」，協助品牌故事重塑、包裝升級與農村體驗遊程規劃，串聯花東綠色旅遊產業鏈。',
-                background: '花蓮優質精品咖啡發展迅速，但小農多面臨缺乏品牌識別、行銷通路單一及包裝未符合現代消費市場喜好等瓶頸。',
-                solution: '學生團隊蹲點明記咖啡莊園，透過設計思考 (Design Thinking) 萃取「莊園風土故事」，重新設計手沖濾掛包裝，並建立線上電子商務訂購流程與體驗遊程專案。',
-                impacts: [
-                    '協助品牌包裝視覺全面煥新，提升年輕族群購買意願 40%',
-                    '協助建立「莊園單品咖啡體驗行程」方案，延伸咖啡產品附加價值',
-                    '成果納入「東部生活型態－社企聚落專區」重點展出項目'
-                ],
-                tags: ['花冬好農', '明記咖啡', '地方創生', '農創品牌']
-            },
-            {
-                id: 'p3',
-                title: '花冬好農 - 湘守合社會企業在地營運專題',
-                subtitle: 'Xiangshouhe Social Enterprise Sustainable Operation Plan',
-                category: 'sustainability',
-                categoryLabel: '地方創生',
-                badgeBg: 'bg-green-800 text-white',
-                image: 'https://images.unsplash.com/photo-1595273670150-bd0c3c392e46?auto=format&fit=crop&w=800&q=80',
-                year: '111 學年度',
-                advisor: '社企聚落輔導教授',
-                team: '湘守合永續營運小組',
-                client: '花蓮「湘守合」在地品牌與社區工作坊',
-                achievement: '大專生教育部在地創生計畫優良成果',
-                excerpt: '協助花蓮在地品牌「湘守合」建構永續經營商業模式，結合在地友善農作與社區婦女賦權，打造具溫度的社企品牌。',
-                background: '「湘守合」致力於推廣在地友善食材與社區手工藝，然商業模式運作需要更加系統化的營運管理與財務結構規劃。',
-                solution: '經營管理學系團隊運用商業模式圖 (Business Model Canvas) 重新審視資源，規劃精準定價策略、社群內容行銷與實體市集展示活動。',
-                impacts: [
-                    '優化產品生產成本結構與庫存管理流程',
-                    '策劃 2 場線下創生市集，現場銷售額突破預期 150%',
-                    '建立社區協作永續商業鏈，強化社會企業正面影響力'
-                ],
-                tags: ['湘守合', '社會企業', '永續商業模式', '花東好農']
-            },
-            {
-                id: 'p4',
-                title: 'AI 顧客旅程與數位品牌內容共創實務',
-                subtitle: 'AI-Driven Customer Journey Mapping & Co-Creation Strategy',
-                category: 'ai-digital',
-                categoryLabel: '數位AI',
-                badgeBg: 'bg-blue-800 text-white',
-                image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80',
-                year: '112-113 學年度',
-                advisor: '數位行銷與資訊管理教授',
-                team: 'AI 數位行銷實驗專案組',
-                client: '東台灣新創企業與合作產學機構',
-                achievement: '產学合作數位轉型創新成果獎',
-                excerpt: '導入 Generative AI 工具優化消費者旅程 (Customer Journey Map)，製作多媒體行銷內容與智慧客服流程提案。',
-                background: '人工智慧浪潮迅速重塑商業環境，中小型企業迫切需要運用生成式 AI 降低行銷成本並提升客戶服務溝通效率。',
-                solution: '學生團隊結合 AI 圖像生成、自然語言處理文案與自動化顧客流程診斷，為合作廠商建構從「觸及、評估到購後體驗」的全通路 AI 顧客旅程。',
-                impacts: [
-                    '產出超過 50 組高質感 AI 生成品牌行銷視覺與多語系影音指令範本',
-                    '縮短品牌內容創作週期達 60%，顯著降低新創企業數位行銷門檻',
-                    '展現經管系學生駕馭新一代科技工具之現代管理即戰力'
-                ],
-                tags: ['生成式AI', '顧客旅程', '數位品牌', '行銷科技']
-            },
-            {
-                id: 'p5',
-                title: '黑水虻循環經濟廢棄物處理可行性評估專題',
-                subtitle: 'Feasibility Analysis of Black Soldier Fly Circular Economy model',
-                category: 'competition',
-                categoryLabel: '專題競賽',
-                badgeBg: 'bg-gold-600 text-navy-950 font-bold',
-                image: 'https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?auto=format&fit=crop&w=800&q=80',
-                year: '110-111 學年度',
-                advisor: '企業管理與資源永續領域教授',
-                team: '循環經濟專題研究隊',
-                client: '有機廢棄物處理場與環境永續專案',
-                achievement: '全國經營管理專題競賽 榮獲大獎',
-                excerpt: '評估運用黑水虻處理花東有機生廚餘與農業廢棄物之商業可行性，建構 ESG 永續循環經濟評估模型。',
-                background: '有機廚餘與農業廢棄物處理為極具挑戰的環境議題，如何將生物科技 (黑水虻) 結合商業模式轉化為高值化蛋白飼料與有機肥，具備極高研究價值。',
-                solution: '經管系學生透過財務預算編製、市場供需分析、營運風險控管與政策法規研析，建立嚴謹的黑水虻廢棄物處理商業可行性投資評估報告。',
-                impacts: [
-                    '榮獲慈濟大學全國經營管理專題競賽等權威賽事肯定',
-                    '建構完整的成本效益模型 (CBA) 與回報週期分析',
-                    '為在地農業廢棄物再利用提供兼具環保與經濟價值的具體企劃'
-                ],
-                tags: ['黑水虻', '循環經濟', 'ESG永續', '專題競賽']
-            },
-            {
-                id: 'p6',
-                title: '七腳川與大陳一村社區地方品牌探索專題',
-                subtitle: 'Community Branding Exploration: Cikasoan & Dachen Village',
-                category: 'sustainability',
-                categoryLabel: '地方創生',
-                badgeBg: 'bg-green-800 text-white',
-                image: 'https://images.unsplash.com/photo-1528605248644-14dd04022da1?auto=format&fit=crop&w=800&q=80',
-                year: '112 學年度',
-                advisor: '人文創生與行銷管理導師',
-                team: '花蓮社區品牌探索隊',
-                client: '吉安七腳川部落與大陳一村社區發展協會',
-                achievement: '社區產學共創優良文史品牌獎',
-                excerpt: '挖掘花蓮吉安七腳川原住民文化與大陳一村移民歷史記憶，轉化為文化創意商品與社區小旅行品牌導覽企劃。',
-                background: '吉安鄉具備多元深厚的文化底蘊，但社區記憶面臨高齡化與文化斷層挑戰，亟需現代管理思維進行品牌活化。',
-                solution: '學生深入社區進行口述歷史訪談，盤點在地文化資產，設計故事化地圖、數位實境解謎體驗與文創伴手禮企劃。',
-                impacts: [
-                    '出版「社區文化品牌探索手冊」與 3 條故事化實體走讀路線',
-                    '協助社區吸引超過 200 名青年學子走入社區進行文化體驗',
-                    '實踐大學社會責任 (USR) 與文化創生雙重使命'
-                ],
-                tags: ['七腳川', '大陳一村', '社區品牌', '文化創生']
-            }
-        ];
-
-        let currentCategory = 'all';
-
-        // Render Cards Function
-        function renderProjects(items) {
-            const container = document.getElementById('projectsGrid');
-            const noResults = document.getElementById('noResults');
-            const countDisplay = document.getElementById('displayedCount');
-
-            container.innerHTML = '';
-            countDisplay.textContent = items.length;
-
-            if (items.length === 0) {
-                noResults.classList.remove('hidden');
-                return;
-            } else {
-                noResults.classList.add('hidden');
-            }
-
-            items.forEach(project => {
-                const card = document.createElement('div');
-                card.className = 'bg-white rounded-lg gold-border-card flex flex-col justify-between overflow-hidden shadow-sm relative group';
-
-                const tagsHtml = project.tags.map(t => `<span class="bg-parchment text-navy-900 border border-gold-500/30 text-[10px] font-semibold px-2 py-0.5 rounded">${t}</span>`).join(' ');
-
-                card.innerHTML = `
-                    <div>
-                        <!-- Card Top Image & Badge -->
-                        <div class="relative h-48 overflow-hidden bg-navy-950">
-                            <img src="${project.image}" alt="${project.title}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 opacity-90 group-hover:opacity-100">
-                            <div class="absolute top-3 left-3 flex items-center space-x-2">
-                                <span class="${project.badgeBg} text-[10px] font-bold tracking-wider uppercase px-2.5 py-1 rounded shadow-md">
-                                    ${project.categoryLabel}
-                                </span>
-                            </div>
-                            <div class="absolute bottom-3 right-3 bg-navy-900/80 backdrop-blur-md text-gold-400 text-xs px-2.5 py-0.5 rounded font-serif border border-gold-500/30">
-                                ${project.year}
-                            </div>
-                        </div>
-
-                        <!-- Card Content Header -->
-                        <div class="p-6">
-                            <h3 class="font-serif font-bold text-lg sm:text-xl text-navy-900 leading-snug group-hover:text-crimson-800 transition">
-                                ${project.title}
-                            </h3>
-                            <p class="font-serif italic text-xs text-gray-500 mt-1 mb-3">
-                                ${project.subtitle}
-                            </p>
-                            
-                            <p class="text-xs text-gray-600 leading-relaxed line-clamp-3 mb-4 font-light">
-                                ${project.excerpt}
-                            </p>
-
-                            <!-- Key Achievement Badge -->
-                            <div class="bg-parchment p-2.5 rounded border border-gold-500/20 text-xs mb-4">
-                                <span class="font-bold text-crimson-800"><i class="fa-solid fa-trophy mr-1 text-gold-600"></i> ${project.achievement}</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Card Footer Actions -->
-                    <div class="px-6 pb-6 pt-0 mt-auto">
-                        <div class="flex flex-wrap gap-1.5 mb-4">
-                            ${tagsHtml}
-                        </div>
-
-                        <button onclick="openModal('${project.id}')" class="w-full bg-navy-900 hover:bg-crimson-800 text-gold-400 hover:text-white text-xs font-semibold uppercase tracking-wider py-2.5 px-4 rounded transition flex items-center justify-center space-x-2 shadow-sm">
-                            <span>檢視詳細專題內容</span>
-                            <i class="fa-solid fa-arrow-right text-[10px]"></i>
-                        </button>
-                    </div>
-                `;
-
-                container.appendChild(card);
-            });
+      const items = document.querySelectorAll('.news-item');
+      items.forEach(item => {
+        if (category === 'all' || item.getAttribute('data-category') === category) {
+          item.style.display = 'flex';
+        } else {
+          item.style.display = 'none';
         }
+      });
+    }
 
-        // Category Filter Switch
-        function setCategory(cat) {
-            currentCategory = cat;
+    // Live Search Logic
+    function searchNews() {
+      const input = document.getElementById('newsInput').value.toLowerCase();
+      const items = document.querySelectorAll('.news-item');
 
-            // Update Tab UI
-            document.querySelectorAll('.cat-btn').forEach(btn => {
-                if (btn.getAttribute('data-cat') === cat) {
-                    btn.className = 'cat-btn bg-navy-900 text-gold-400 font-semibold px-4 py-2 rounded-md text-xs sm:text-sm border border-navy-900 transition shadow-sm';
-                } else {
-                    btn.className = 'cat-btn bg-gray-100 text-gray-700 hover:bg-navy-900 hover:text-white px-4 py-2 rounded-md text-xs sm:text-sm border border-transparent transition';
-                }
-            });
-
-            filterProjects();
+      items.forEach(item => {
+        const text = item.textContent.toLowerCase();
+        if (text.includes(input)) {
+          item.style.display = 'flex';
+        } else {
+          item.style.display = 'none';
         }
+      });
+    }
 
-        // Search & Filter Execution
-        function filterProjects() {
-            const query = document.getElementById('searchInput').value.toLowerCase().trim();
+    // Modal Dialog Logic
+    function openModal(title, content) {
+      document.getElementById('modalTitle').textContent = title;
+      document.getElementById('modalBody').textContent = content;
+      document.getElementById('modalOverlay').classList.add('active');
+    }
 
-            const filtered = projectsData.filter(item => {
-                const matchCat = (currentCategory === 'all') || (item.category === currentCategory);
-                const matchQuery = (item.title.toLowerCase().includes(query)) ||
-                                   (item.subtitle.toLowerCase().includes(query)) ||
-                                   (item.excerpt.toLowerCase().includes(query)) ||
-                                   (item.tags.some(t => t.toLowerCase().includes(query)));
-                return matchCat && matchQuery;
-            });
+    function closeModal() {
+      document.getElementById('modalOverlay').classList.remove('active');
+    }
 
-            renderProjects(filtered);
-        }
-
-        function resetFilters() {
-            document.getElementById('searchInput').value = '';
-            setCategory('all');
-        }
-
-        // Font Size Adjuster (Matching TCU site prompt feature)
-        function setFontSize(size) {
-            const root = document.getElementById('app-root');
-            root.classList.remove('font-size-sm', 'font-size-md', 'font-size-lg');
-            
-            document.getElementById('btn-font-sm').classList.remove('text-gold-400', 'font-bold');
-            document.getElementById('btn-font-md').classList.remove('text-gold-400', 'font-bold');
-            document.getElementById('btn-font-lg').classList.remove('text-gold-400', 'font-bold');
-
-            if (size === 'sm') {
-                root.classList.add('font-size-sm');
-                document.getElementById('btn-font-sm').classList.add('text-gold-400', 'font-bold');
-            } else if (size === 'lg') {
-                root.classList.add('font-size-lg');
-                document.getElementById('btn-font-lg').classList.add('text-gold-400', 'font-bold');
-            } else {
-                root.classList.add('font-size-md');
-                document.getElementById('btn-font-md').classList.add('text-gold-400', 'font-bold');
-            }
-        }
-
-        // Modal Open / Close Handler
-        function openModal(id) {
-            const project = projectsData.find(p => p.id === id);
-            if (!project) return;
-
-            document.getElementById('modalTitle').textContent = project.title;
-            document.getElementById('modalSubTitle').textContent = project.subtitle;
-            document.getElementById('modalCategoryBadge').textContent = project.categoryLabel;
-            document.getElementById('modalYear').textContent = project.year;
-            document.getElementById('modalImage').src = project.image;
-
-            document.getElementById('modalAdvisor').textContent = project.advisor;
-            document.getElementById('modalTeam').textContent = project.team;
-            document.getElementById('modalClient').textContent = project.client;
-            document.getElementById('modalAchievement').textContent = project.achievement;
-
-            document.getElementById('modalBackground').textContent = project.background;
-            document.getElementById('modalSolution').textContent = project.solution;
-
-            // Render Impact List
-            const impactUl = document.getElementById('modalImpactList');
-            impactUl.innerHTML = '';
-            project.impacts.forEach(imp => {
-                const li = document.createElement('li');
-                li.textContent = imp;
-                impactUl.appendChild(li);
-            });
-
-            // Render Tags
-            const tagsDiv = document.getElementById('modalTags');
-            tagsDiv.innerHTML = '<span class="text-xs text-gray-400 font-serif mr-1">主題標籤:</span>';
-            project.tags.forEach(t => {
-                const tagSpan = document.createElement('span');
-                tagSpan.className = 'bg-navy-900 text-gold-400 text-xs px-2.5 py-1 rounded border border-gold-500/30';
-                tagSpan.textContent = '#' + t;
-                tagsDiv.appendChild(tagSpan);
-            });
-
-            document.getElementById('projectModal').classList.remove('hidden');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeModal() {
-            document.getElementById('projectModal').classList.add('hidden');
-            document.body.style.overflow = 'auto';
-        }
-
-        // Modal Backdrop Click to close
-        document.getElementById('projectModal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeModal();
-            }
-        });
-
-        // Close modal on Escape key
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                closeModal();
-            }
-        });
-
-        // Initial Load
-        window.onload = function() {
-            renderProjects(projectsData);
-        };
-    </script>
+    // Close Modal on Overlay Click
+    document.getElementById('modalOverlay').addEventListener('click', function(e) {
+      if (e.target === this) {
+        closeModal();
+      }
+    });
+  </script>
 </body>
 </html>
